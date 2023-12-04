@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
+import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
@@ -65,7 +66,14 @@ public class MainController {
     return response;
   }
   
-  // 포켓몬 데이터 리스트 조회 //
+  // 포켓몬 이름 데이터 리스트 조회 //
+  @GetMapping("/list/{section}")
+  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketList(
+    @PathVariable(value = "section", required = true) Integer section
+  ){
+    ResponseEntity<? super GetPoketNameListResponseDto> response = poketService.getPoketList(section);
+    return response;
+  }
 
 
 }
