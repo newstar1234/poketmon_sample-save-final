@@ -1,0 +1,21 @@
+.input-box-container {
+  margin: 10px;
+
+  width: 100px;
+  height: 45px;
+
+  border: 1px solid rgba(0,0,0,0.3); 
+  border-radius: 20px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.input-box-name {
+  font-size: 20px;
+  font-weight: 500;
+  
+}

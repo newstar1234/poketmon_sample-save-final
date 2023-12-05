@@ -1,0 +1,226 @@
+#poket-sample-result{
+  width: auto;
+  height: 960px; 
+}
+
+.poket-sample-result-header {
+  height: 96px;
+
+  font-size: 48px;
+  font-weight: 600;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0,0,0,0.1);
+}
+
+.poket-sample-result-header-left {
+  width: 20%;
+  display: flex;
+  justify-content: left;
+}
+
+.poket-sample-result-back {
+  width: 60px;
+  height: 55px;
+
+  margin: 5px;
+
+  font-size: 20px;
+  
+  border: none;
+  border-radius: 30px;
+}
+
+.poket-sample-result-back:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,255,0.1);
+}
+
+.poket-sample-result-header-right {
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poket-sample-result-main-box {
+  background-color: rgba(255,0,0,0.1);
+
+  height: 784px;
+}
+
+.poket-sample-result-search-box {
+  margin-top: 30px;
+  height: 100px;
+  
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255,255,255,1);
+}
+
+.poket-sample-result-search-input {
+  height: 30px;
+  width: 380px;
+}
+
+.poket-sample-result-search-button {
+  height: 35px;
+  width: 80px;
+
+  font-size: 24px;
+
+  border-radius: 15px;
+  border: none;
+}
+
+.poket-sample-result-search-button:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,255,0.1);
+}
+
+.poket-sample-result-box {
+  padding: 70px 15px 30px 15px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+
+  justify-content: center;
+  align-items: center;
+
+}
+
+.poket-save-input-first {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.poket-save-input-second {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.poket-save-input-third {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.poket-save-input-fourth {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.poket-save-sample-name{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-type{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-specificity{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-character{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-thing{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-value {
+  font-size: 42px;
+  font-weight: 550;
+}
+
+.poket-save-sample-technology{
+  font-size: 42px;
+  font-weight: 550;
+}
+
+.poket-save-sample-HP {
+  height: 30px;
+
+  font-size: 32px;
+}
+
+.poket-save-sample-attack {
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-defence{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-special-attack {
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-special-defence{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-speed {
+  height: 30px;
+
+  font-size: 32px;
+}
+
+
+.poket-save-sample-technology-one{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-technology-two{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-technology-three{
+  height: 30px;
+
+  font-size: 32px;
+}
+.poket-save-sample-technology-four{
+  height: 30px;
+
+  font-size: 32px;
+}

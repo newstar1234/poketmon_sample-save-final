@@ -1,0 +1,109 @@
+#poket-sample{
+  width: auto;
+  height: 960px; 
+ }
+ 
+ .poket-header{
+   width: auto;
+   height: 96px;
+ 
+   background-color: rgba(0,0,0,0.1);
+   
+   font-size: 36px;
+   font-weight: 600;
+ 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .poket-main-box {
+   width: auto;
+   height: 864px;
+ 
+   margin: 20px 20px 20px 20px;
+ }
+ 
+ .poket-main-container {
+   display: flex;
+   flex-direction: column;
+ 
+   background-color: rgba(255,0,0,0.1);
+ }
+ 
+ .poket-main-button-box {
+   height: 72px;
+ 
+   display: flex;
+   flex-direction: row;
+   justify-content: right;
+ 
+ }
+ 
+ .poket-main-button {
+   width: 84px;
+ 
+   font-size: 24px;
+   font-weight: 600;
+ }
+ 
+ .poket-main-button:hover {
+   cursor: pointer;
+   background-color: rgba(0,0,0,0.3);
+ }
+ 
+ .poket-main-list-box {
+   height: 554px;
+ 
+ }
+ 
+ .poket-main-list-title {
+   padding: 0 30px 0 30px;
+ 
+   font-size: 32px;
+   font-weight: 550;
+ 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ 
+   background-color: rgba(255,255,255,0.5);
+ }
+ 
+ .poket-main-list-content {
+   padding: 0 30px 0 30px;
+ 
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+ }
+ 
+ .poket-main-search {
+   height: 50px;
+ 
+   display: flex;
+   flex-direction: row;
+ 
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .poket-main-search-input {
+   width: 800px;
+   height: 30px;
+ }
+ 
+ .poket-main-search-button {
+   margin-left: 20px;
+ 
+   height: 30px;
+ 
+   font-size: 16px;
+   font-weight: 550;
+ 
+ }
+ 
+ .poket-main-search-button:hover {
+   cursor: pointer;
+ }
