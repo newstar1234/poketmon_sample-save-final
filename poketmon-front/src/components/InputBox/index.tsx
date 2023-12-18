@@ -1,28 +1,35 @@
-import React from 'react';
+import {ChangeEvent, forwardRef, KeyboardEvent} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import { RESULT_PATH } from '../../constants';
 
 interface Props{
-  name : String;
+  name : string;
+  onChange? : (event: ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown? : (event : KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export default function InputBox({name} : Props) {
+const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
 // state //
 const navigator = useNavigate();
 
-// function //
-// event handler //
-const onClickNameHandler = () => {
-  navigator(RESULT_PATH());
-}
-// component //
-// effect //
+// state: properties //
+const { name, onChange, onKeyDown } = props;
+
+
+// event handler : Key 처리 //
+const onKeyDownHandler = (event : KeyboardEvent<HTMLInputElement>) => {
+  if(!onKeyDown) return;
+  onKeyDown(event);
+};
+
 
 // render //
   return (
     <div className='input-box-container'>
-      <div className='input-box-name' onClick={onClickNameHandler}>{name}</div>
+      <input ref={ref} className='input-box-name' onChange={onChange} onKeyDown={onKeyDownHandler} />
     </div>
   )
-}
+
+});
+
+export default InputBox;
