@@ -20,15 +20,18 @@ const navigator = useNavigate();
 const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
   if(!responseBody) return;
   const { code } = responseBody;
-  if(code === 'FA') return;
+  if(code === 'DB') return;
   if(code !== 'SU') return;
 
   const { nameList } = responseBody as GetPoketNameListResponseDto;
   setNameList(nameList);
-  console.log('나와라');
 }
 
 // event handler //
+const onPoketNameListClickHandler = () => {
+  navigator('');
+};
+
 const onSaveClickHandler = () => {
   navigator('/save');
 };
@@ -40,7 +43,6 @@ const onResultSearchClickHandler = () => {
 // effect //
 useEffect(() => {
   getPoketNameListRequest().then(getPoketNameListResponse);
-  console.log('1111');
 }, []);
 
 
@@ -57,7 +59,9 @@ useEffect(() => {
               <div className='poket-main-list-title'>{'저장된 포켓몬 목록'}</div>
               <div className='poket-main-list-content'>
                 <div className='poket-main-list-name-box'>
-                  {nameList.map((item) => (<PoketListItem listItem={item}/>))}
+                  {
+                    nameList.map((nameList) => <PoketListItem item={nameList}/>)
+                  }
                 </div>
               </div>
             </div>

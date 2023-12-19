@@ -3,12 +3,12 @@ import './style.css';
 import { PoketNameListResponseDto } from '../../interfaces/response';
 
 interface Props {
-  listItem : PoketNameListResponseDto;
+  item : PoketNameListResponseDto;
 }
 
-export default function PoketListItem({listItem} : Props) {
+export default function PoketListItem({item} : Props) {
 
-  const { name } = listItem;
+  const { name } = item;
 
   return (
     <div className='poket-name-badge'>{name}</div>
