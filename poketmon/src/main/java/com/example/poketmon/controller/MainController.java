@@ -65,15 +65,15 @@ public class MainController {
     ResponseEntity<? super GetPoketResponseDto> response = poketService.getPoket(poketmonNumber);
     return response;
   }
-  
-  // 포켓몬 이름 데이터 리스트 조회 //
-  @GetMapping("/list/{section}")
-  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketList(
-    @PathVariable(value = "section", required = true) Integer section
+
+  // 포켓몬 이름 리스트 조회 //
+  // todo : 이름만 받아오는 건데 굳이 번호를 받을 필요가 있는지 다시 고민해보기 //
+  @GetMapping("/{poketmonNumber}/name-list")
+  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(
+    @PathVariable(value = "poketmonNumber", required = true) Integer poketmonNumber
   ){
-    ResponseEntity<? super GetPoketNameListResponseDto> response = poketService.getPoketList(section);
+    ResponseEntity<? super GetPoketNameListResponseDto> response = poketService.getPoketNameList(poketmonNumber);
     return response;
   }
-
-
+  
 }

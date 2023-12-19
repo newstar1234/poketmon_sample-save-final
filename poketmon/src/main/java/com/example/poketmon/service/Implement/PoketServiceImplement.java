@@ -1,4 +1,6 @@
 package com.example.poketmon.service.Implement;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -11,12 +13,10 @@ import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
-import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
-import com.example.poketmon.entity.PoketListEntity;
-import com.example.poketmon.repository.PoketListRepository;
 import com.example.poketmon.repository.PoketRepository;
+import com.example.poketmon.repository.resultSet.GetPoketNameListResultSet;
 import com.example.poketmon.service.PoketService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,6 @@ import lombok.RequiredArgsConstructor;
 public class PoketServiceImplement implements PoketService{
 
   private final PoketRepository poketRepository;
-  private final PoketListRepository poketListRepository;
   
   @Override
   public ResponseEntity<? super PostPoketResponseDto> poketSave(PostPoketRequestDto dto) {
@@ -104,23 +103,19 @@ public class PoketServiceImplement implements PoketService{
   }
 
   @Override
-  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketList(Integer section) {
+  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(Integer poketmonNumber) {
 
-    List<PoketListResponseDto> poketList = null;
+    List<GetPoketNameListResultSet> resultSets = new ArrayList<>();
 
     try {
-      Integer limit = (section - 1) * 30;
 
-      List<PoketListEntity> poketListEntities = poketListRepository.getPoketList(limit);
-
-      poketList = PoketListResponseDto.copyEntityList(poketListEntities);
+      resultSets = poketRepository.getPoketNameList(poketmonNumber);
       
     } catch (Exception exception) {
       exception.printStackTrace();
       return ResponseDto.databaseError();
     }
-    return GetPoketNameListResponseDto.success(poketList);
-
+    return GetPoketNameListResponseDto.success(resultSets);
   }
   
 }

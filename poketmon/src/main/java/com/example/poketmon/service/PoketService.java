@@ -20,8 +20,8 @@ public interface PoketService {
   ResponseEntity<? super DeletePoketResponseDto> poketDelete(Integer poketmonNumber);
   // 포켓몬 데이터 조회 //
   ResponseEntity<? super GetPoketResponseDto> getPoket(Integer poketmonNumber);
-  // 포켓몬 데이터 리스트 조회 //
-  ResponseEntity<? super GetPoketNameListResponseDto> getPoketList(Integer section);
 
+  // 포켓몬 이름 리스트 조회 //
+  ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(Integer poketmonNumber);
 
 }

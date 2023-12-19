@@ -1,13 +1,8 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
 import {useNavigate, useParams} from "react-router-dom";
-import { getPoketNameListRequest } from '../../apis';
 import { usePagination } from '../../hooks';
-import { GetPoketNameListResponseDto, PoketNameListResponseDto } from '../../interfaces/response';
-import { ResponseDto } from '../../interfaces';
-import { MAIN_POKET_NAME_LIST } from '../../constants';
 import Pagination from '../../components/Pagination';
-import PoketNameListItem from '../../components/PoketNameListItem';
 
 //            component           //
 export default function Main() {
@@ -22,33 +17,10 @@ export default function Main() {
   // state : 게시물 번호 path 상태 //
   const { poketmonNumber } = useParams();
 
-  // state : 현재 페이지에서 보여줄 포켓몬 이름 리스트 상태 //
-  const [poketNameList, setPoketNameList] = useState<PoketNameListResponseDto[]>([]);
-
 
 //            function           //
 const navigator = useNavigate();
 
-// function : 페이지네이션 함수 //
-const getViewPoketNameList = (list: PoketNameListResponseDto[]) => {
-  const startIndex = MAIN_POKET_NAME_LIST * (currentPage -1);
-  const lastIndex = list.length > MAIN_POKET_NAME_LIST * currentPage ? MAIN_POKET_NAME_LIST * currentPage : list.length;
-  const viewPoketList = list.slice(startIndex, lastIndex);
-  setPoketNameList(viewPoketList);
-}
-
-// function : get poket name list response 처리 함수 //
-const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
-  if(!responseBody) return;
-  const { code } = responseBody;
-  if(code === 'DE') alert('데이터베이스 에러');
-  if(code !== 'SU') return;
-
-  const { list } = responseBody as GetPoketNameListResponseDto;
-  changeSection(list.length, MAIN_POKET_NAME_LIST);
-  getViewPoketNameList(list);
-  setPoketNameList(list);
-}
 
 // event handler //
 const onSaveClickHandler = () => {
@@ -75,7 +47,7 @@ const onResultSearchClickHandler = () => {
               <div className='poket-main-list-title'>{'저장된 포켓몬 목록'}</div>
               <div className='poket-main-list-content'>
                 <div className='poket-main-list-name-box'>
-                  {poketNameList.map((item) => (<PoketNameListItem item ={item}/>)) }
+                  {<></>}
                 </div>
                 <Pagination 
                 totalPage={totalPage}
