@@ -103,13 +103,13 @@ public class PoketServiceImplement implements PoketService{
   }
 
   @Override
-  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(Integer poketmonNumber) {
+  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList() {
 
     List<GetPoketNameListResultSet> resultSets = new ArrayList<>();
 
     try {
 
-      resultSets = poketRepository.getPoketNameList(poketmonNumber);
+      resultSets = poketRepository.getPoketNameList();
       
     } catch (Exception exception) {
       exception.printStackTrace();

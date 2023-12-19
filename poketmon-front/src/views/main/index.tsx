@@ -1,26 +1,32 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
-import {useNavigate, useParams} from "react-router-dom";
-import { usePagination } from '../../hooks';
-import Pagination from '../../components/Pagination';
+import { useNavigate } from "react-router-dom";
+import { getPoketNameListRequest } from '../../apis';
+import { GetPoketNameListResponseDto, PoketNameListResponseDto } from '../../interfaces/response';
+import { ResponseDto } from '../../interfaces';
+import PoketListItem from '../../components/PoketListItem';
 
 //            component           //
 export default function Main() {
 
-  // state : 페이지네이션 함수 //
-  const { totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection } = usePagination();
-
-  // state : 포켓몬 이름 요소 참조 상태 //
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  // state : 포켓몬 이름 상태 //
-  const [name, setName] = useState<string>('');
-  // state : 게시물 번호 path 상태 //
-  const { poketmonNumber } = useParams();
+  // state : 포켓몬 이름 리스트상태 //
+  const [nameList, setNameList] = useState<PoketNameListResponseDto[]>([]);
 
 
 //            function           //
 const navigator = useNavigate();
 
+//            function           //
+const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
+  if(!responseBody) return;
+  const { code } = responseBody;
+  if(code === 'FA') return;
+  if(code !== 'SU') return;
+
+  const { nameList } = responseBody as GetPoketNameListResponseDto;
+  setNameList(nameList);
+  console.log('나와라');
+}
 
 // event handler //
 const onSaveClickHandler = () => {
@@ -31,7 +37,11 @@ const onResultSearchClickHandler = () => {
   navigator('/result');
 };
 
-
+// effect //
+useEffect(() => {
+  getPoketNameListRequest().then(getPoketNameListResponse);
+  console.log('1111');
+}, []);
 
 
 //            render           //
@@ -47,14 +57,8 @@ const onResultSearchClickHandler = () => {
               <div className='poket-main-list-title'>{'저장된 포켓몬 목록'}</div>
               <div className='poket-main-list-content'>
                 <div className='poket-main-list-name-box'>
-                  {<></>}
+                  {nameList.map((item) => (<PoketListItem listItem={item}/>))}
                 </div>
-                <Pagination 
-                totalPage={totalPage}
-                currentPage={currentPage}
-                onPreviousClickHandler={onPreviousClickHandler}
-                onNextClickHandler={onNextClickHandler}
-                onPageClickHandler={onPageClickHandler} />
               </div>
             </div>
             <div className='poket-main-search'>

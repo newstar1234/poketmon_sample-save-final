@@ -1,5 +1,7 @@
 package com.example.poketmon.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +21,6 @@ import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.service.PoketService;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -67,12 +68,10 @@ public class MainController {
   }
 
   // 포켓몬 이름 리스트 조회 //
-  // todo : 이름만 받아오는 건데 굳이 번호를 받을 필요가 있는지 다시 고민해보기 //
-  @GetMapping("/{poketmonNumber}/name-list")
+  @GetMapping("/name-list")
   public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(
-    @PathVariable(value = "poketmonNumber", required = true) Integer poketmonNumber
   ){
-    ResponseEntity<? super GetPoketNameListResponseDto> response = poketService.getPoketNameList(poketmonNumber);
+    ResponseEntity<? super GetPoketNameListResponseDto> response = poketService.getPoketNameList();
     return response;
   }
   

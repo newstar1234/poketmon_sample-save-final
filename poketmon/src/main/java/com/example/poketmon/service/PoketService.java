@@ -22,6 +22,6 @@ public interface PoketService {
   ResponseEntity<? super GetPoketResponseDto> getPoket(Integer poketmonNumber);
 
   // 포켓몬 이름 리스트 조회 //
-  ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList(Integer poketmonNumber);
+  ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList();
 
 }

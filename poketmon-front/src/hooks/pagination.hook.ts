@@ -1,58 +1,72 @@
-import { useState } from "react";
-import { getPagination } from "../utils";
+import { useEffect, useState } from 'react';
 
-const usePagination = () => {
+const usePagination = <T>(countPerPage : number) => {
 
-  // 현재 페이지 상태 //
+  // state : 전체 객체 리스트 상태 //
+  const [totalList, setTotalList] = useState<T[]>([]);
+  // state : 보여줄 객체 리스트 상태 //
+  const [viewList, setViewList] = useState<T[]>([]);
+  // state : 현재 페이지 번호 상태 //
   const [currentPage, setCurrentPage] = useState<number>(1);
-  // 현재 섹션 상태 //
+
+  // state : 전체 페이지 번호 리스트 상태 //
+  const [totalPageList, setTotalPageList] = useState<number[]>([1]);
+  // state : 보여줄 페이지 번호 리스트 상태 //
+  const [viewPageList, setViewPageList] = useState<number[]>([1]);
+  // state : 현재 섹션 상태 //
   const [currentSection, setCurrentSection] = useState<number>(1);
-  // 한 섹션에 표시될 페이지 리스트 상태 //
-  const [totalPage, setTotalPage] = useState<number[]>([]);
-  // 전체 섹션 상태 //
+
+  // state : 전체 섹션 상태 //
   const [totalSection, setTotalSection] = useState<number>(1);
-  // 전체 페이지 수 상태 //
-  const [totalPageCount, setTotalPageCount] = useState<number>(0);
-  // 한 섹션에 최고 페이지 상태 //
-  const [minPage, setMinPage] = useState<number>(0);
-  // 한 섹션에 최저 페이지 상태 //
-  const [maxPage, setMaxPage] = useState<number>(0);
+
+  // function : 보여줄 객체 리스트 추출 함수 //
+  const setView = () => {
+    const FIRST_INDEX = countPerPage * (currentPage - 1);
+    const LAST_INDEX = totalList.length > countPerPage * currentPage ? countPerPage * currentPage : totalList.length;
+    const viewList = totalList.slice(FIRST_INDEX, LAST_INDEX);
+    setViewList(viewList);
+  };
+  // function : 보여줄 페이지 리스트 추출 함수 //
+  const setViewPage = () => {
+    const FIRST_INDEX = 10 * (currentSection -1);
+    const LAST_INDEX = totalPageList.length > 10 * currentSection ? 10 * currentSection : totalPageList.length;
+    const viewPageList = totalPageList.slice(FIRST_INDEX, LAST_INDEX);
+    setViewPageList(viewPageList);
+  };
+
+  // effect : total list가 변경될 때마다 실행할 작업 //
+  useEffect(() => {
+    const totalPage = Math.ceil(totalList.length / countPerPage);    // 올림처리 Math.ceil
+    const totalPageList:number[] = [];
+    for(let page = 1; page <= totalPage; page++) totalPageList.push(page);
+    setTotalPageList(totalPageList);
+    
+    const totalSection = Math.ceil(totalList.length / (countPerPage * 10));
+    setTotalSection(totalSection);
+
+    setCurrentPage(1);
+    setCurrentSection(1);
+
+    setView();
+    setViewPage();
+  }, [totalList]);
   
+  // effect : current page가 변경될 때마다 실행할 작업 //
+  useEffect(setView, [currentPage]);
+  // effect : current section이 변경될 때마다 실행할 작업 //
+  useEffect(setViewPage, [currentPage]);
 
-  // 페이지 클릭 이벤트 //
-  const onPageClickHandler = (page : number) => {
-       setCurrentPage(page);
-  }
-  // 이전 버튼 클릭 이벤트 //
-  const onPreviousClickHandler = () => {  
-       // 한 페이지씩 이동 + 섹션 이동
-       if(currentPage == 1) return;
-       if(currentPage == minPage) setCurrentSection(currentSection - 1);
-       setCurrentPage(currentPage - 1);
-  }
- // 다음 버튼 클릭 이벤트 //
-  const onNextClickHandler = () => {
-       // 한 페이지씩 이동 + 섹션 이동
-       if(currentPage == totalPageCount) return;
-       if(currentPage == maxPage) setCurrentSection(currentSection + 1);
-       setCurrentPage(currentPage + 1);
-  }
+  return {
+    currentPage,
+    setCurrentPage,
+    currentSection,
+    setCurrentSection,
+    viewList,
+    viewPageList,
+    totalSection,
+    setTotalList
+  };
 
-  // 현재 섹션이 변경될 때 호출할 함수 //
-  const changeSection = (roomCount: number, countByPage: number) => {
-       const { section, minPage, maxPage, totalPageCount } = getPagination(roomCount, currentSection, countByPage);
-       
-       setMinPage(minPage);
-       setMaxPage(maxPage);
-       setTotalSection(section);
-       setTotalPageCount(totalPageCount);
-       
-       const pageList = [];
-       for(let page = minPage; page <= maxPage; page++) pageList.push(page);
-       setTotalPage(pageList);
-  }
-
-  return {totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection};
-}
+};
 
 export default usePagination;

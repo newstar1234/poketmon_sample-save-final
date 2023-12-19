@@ -1,3 +1,5 @@
 import usePagination from "./pagination.hook";
 
-export { usePagination };
+export {
+  usePagination
+};

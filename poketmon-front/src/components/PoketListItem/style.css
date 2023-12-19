@@ -1,0 +1,11 @@
+.poket-name-badge {
+  border: 1px solid rgba(0,0,0,0.5);
+  border-radius: 30px;
+  padding: 6px 20px;
+
+  color: rgba(0,0,0,0.5);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+}

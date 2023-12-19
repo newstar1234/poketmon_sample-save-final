@@ -23,6 +23,6 @@ public interface PoketRepository extends JpaRepository<PoketEntity, Integer>{
     "ORDER BY poketmonNumber DESC ",
     nativeQuery = true
   )
-  List<GetPoketNameListResultSet> getPoketNameList(Integer poketmonNumber);
+  List<GetPoketNameListResultSet> getPoketNameList();
   
 }
