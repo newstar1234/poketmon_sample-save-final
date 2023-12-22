@@ -1,7 +1,9 @@
-import PoketNameListResponseDto from "./poket-name-list.response.dto";
+import PoketResponseDto from "./poket.response.dto";
 import GetPoketNameListResponseDto from "./get-poket-name-list.response.dto";
+import PoketNameListResponseDto from "./get-poket-name-list.response.dto";
 
 export type {
-  PoketNameListResponseDto,
+  PoketResponseDto,
   GetPoketNameListResponseDto,
+  PoketNameListResponseDto
 }

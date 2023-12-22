@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { MAIN_PATH, RESULT_PATH, SAVE_PATH } from './constants';
+import { MAIN_PATH, POKETMONNUMBER_VARIABLE, RESULT_PATH, SAVE_PATH } from './constants';
 import Main from './views/main';
 import Save from './views/save';
 import Result from './views/result';
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path={MAIN_PATH()} element={<Main/>} />
         <Route path={SAVE_PATH()} element={<Save/>} />
-        <Route path={RESULT_PATH()} element={<Result/>} />
+        <Route path={RESULT_PATH(POKETMONNUMBER_VARIABLE)} element={<Result/>} />
       </Routes>
     </Router>
   );

@@ -2,19 +2,40 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
 import { useNavigate } from "react-router-dom";
 import { getPoketNameListRequest } from '../../apis';
-import { GetPoketNameListResponseDto, PoketNameListResponseDto } from '../../interfaces/response';
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
+import { usePagination } from '../../hooks';
+import { MAIN_POKET_NAME_LIST } from '../../constants';
+import Pagination from '../../components/Pagination';
+import { GetPoketNameListResponseDto, PoketNameListResponseDto } from '../../interfaces/response';
+
+
 
 //            component           //
 export default function Main() {
 
-  // state : 포켓몬 이름 리스트상태 //
-  const [nameList, setNameList] = useState<PoketNameListResponseDto[]>([]);
 
+  // state : 페이지네이션 관련 상태 //
+  const{totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection} = usePagination();
+
+  // state : 현재 페이지에서 보여줄 포켓몬 이름 리스트상태 //
+  const [viewNameList, setViewNameList] = useState<PoketNameListResponseDto[]>([]);
+  // state : 최신 리스트 상태 //
+  const [currentList, setCurrentList] = useState<PoketNameListResponseDto[]>([]);
 
 //            function           //
 const navigator = useNavigate();
+
+
+//            function           //
+// 페이지네이션 함수 //
+const getViewPoketList = (list : PoketNameListResponseDto[]) => {
+  const startIndex = MAIN_POKET_NAME_LIST * (currentPage -1);
+  const lastIndex = list.length > MAIN_POKET_NAME_LIST * currentPage ? 
+                    MAIN_POKET_NAME_LIST * currentPage : list.length;
+  const viewNameList = list.slice(startIndex, lastIndex);
+  setViewNameList(viewNameList);
+};
 
 //            function           //
 const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
@@ -23,8 +44,11 @@ const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | Re
   if(code === 'DB') return;
   if(code !== 'SU') return;
 
-  const { nameList } = responseBody as GetPoketNameListResponseDto;
-  setNameList(nameList);
+  const { poketNameList } = responseBody as GetPoketNameListResponseDto;
+  changeSection(poketNameList.length, 5);
+  setCurrentList(poketNameList);
+  getViewPoketList(poketNameList);
+  console.log(poketNameList);
 }
 
 // event handler //
@@ -41,10 +65,9 @@ const onResultSearchClickHandler = () => {
 };
 
 // effect //
-useEffect(() => {
-  // getPoketNameListRequest().then(getPoketNameListResponse);
-}, []);
-
+useEffect (() => {
+  getPoketNameListRequest().then(getPoketNameListResponse);
+}, [currentSection]);
 
 //            render           //
   return (
@@ -62,11 +85,15 @@ useEffect(() => {
           </div>
           <div className='poket-main-contents-save-box'>
             <div className='poket-main-contents-save-name'>
-              <PoketListItem />
-              <PoketListItem />
-              <PoketListItem />
-              <PoketListItem />
-              <PoketListItem />
+              {viewNameList.map((item) => (<PoketListItem item={item}/>))}
+            </div>
+            <div className='poket-main-pagination'>
+            <Pagination
+            totalPage={totalPage}
+            currentPage={currentPage}
+            onPreviousClickHandler={onPreviousClickHandler}
+            onNextClickHandler={onNextClickHandler}
+            onPageClickHandler={onPageClickHandler} />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 export const MAIN_PATH = () =>  '/';
 export const SAVE_PATH = () => '/save';
-export const RESULT_PATH = () => '/result';
+export const RESULT_PATH = (poketmonNumber : number | string) => `/result/${poketmonNumber}`;
+export const POKETMONNUMBER_VARIABLE = ':poketmonNumber';
 
 
 export const MAIN_POKET_NAME_LIST = 5;

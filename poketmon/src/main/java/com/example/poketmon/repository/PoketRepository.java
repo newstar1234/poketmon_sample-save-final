@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.resultSet.GetPoketNameListResultSet;
+import com.example.poketmon.repository.resultSet.GetPoketNameResultSet;
 
 @Repository
 public interface PoketRepository extends JpaRepository<PoketEntity, Integer>{
@@ -25,4 +26,15 @@ public interface PoketRepository extends JpaRepository<PoketEntity, Integer>{
   )
   List<GetPoketNameListResultSet> getPoketNameList();
   
+  @Query(
+    value = 
+    "SELECT " +
+    "poketmon_number AS poketmonNumber, " +
+    "name AS name " +
+    "from poketmon " +
+    "WHERE poketmon_number = ?1 ",
+    nativeQuery = true
+  )
+  GetPoketNameResultSet getPoketName(Integer poketmonNumber);
+
 }

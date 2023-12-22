@@ -1,8 +1,12 @@
 import ResponseDto from "../response.dto";
-import PoketNameListResponseDto from "./poket-name-list.response.dto";
+
+export default interface PoketNameListResponseDto {
+  poketmonNumber : string | number;
+  name : string;
+}
 
 export default interface GetPoketNameListResponseDto extends ResponseDto {
 
-  nameList : PoketNameListResponseDto[];
+  poketNameList : PoketNameListResponseDto[];
 
 }

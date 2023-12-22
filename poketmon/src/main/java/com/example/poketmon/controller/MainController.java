@@ -16,6 +16,7 @@ import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
+import com.example.poketmon.dto.response.GetPoketNameResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
@@ -75,4 +76,11 @@ public class MainController {
     return response;
   }
   
+  @GetMapping("/name/{poketmonNumber}")
+  public ResponseEntity<? super GetPoketNameResponseDto> getPoketName(
+    @PathVariable(value = "poketmonNumber", required = true) Integer poketmonNumber
+  ) {
+    ResponseEntity<? super GetPoketNameResponseDto> response = poketService.getPoketName(poketmonNumber);
+    return response;
+  }
 }

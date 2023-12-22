@@ -11,12 +11,14 @@ import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
+import com.example.poketmon.dto.response.GetPoketNameResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.PoketRepository;
 import com.example.poketmon.repository.resultSet.GetPoketNameListResultSet;
+import com.example.poketmon.repository.resultSet.GetPoketNameResultSet;
 import com.example.poketmon.service.PoketService;
 
 import lombok.RequiredArgsConstructor;
@@ -116,6 +118,24 @@ public class PoketServiceImplement implements PoketService{
       return ResponseDto.databaseError();
     }
     return GetPoketNameListResponseDto.success(resultSets);
+  }
+
+  @Override
+  public ResponseEntity<? super GetPoketNameResponseDto> getPoketName(Integer poketmonNumber) {
+
+    GetPoketNameResultSet resultSet = null;
+
+    try {
+
+      resultSet = poketRepository.getPoketName(poketmonNumber);
+      if(resultSet == null) return GetPoketNameResponseDto.fail();
+      
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+    return GetPoketNameResponseDto.success(resultSet);
+
   }
   
 }
