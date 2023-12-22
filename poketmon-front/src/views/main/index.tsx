@@ -1,13 +1,15 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
-import { useNavigate } from "react-router-dom";
-import { getPoketNameListRequest } from '../../apis';
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { getPoketNameListRequest, postPoketRequest } from '../../apis';
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
-import { MAIN_POKET_NAME_LIST } from '../../constants';
+import { MAIN_POKET_NAME_LIST, SAVE_PATH } from '../../constants';
 import Pagination from '../../components/Pagination';
-import { GetPoketNameListResponseDto, PoketNameListResponseDto } from '../../interfaces/response';
+import { GetPoketNameListResponseDto, PoketNameListResponseDto, PostPoketResponseDto } from '../../interfaces/response';
+import PostPoketRequestDto from '../../interfaces/request/post-poket.request.dto';
+import { usePoketSaveStore } from '../../stores';
 
 
 
@@ -22,7 +24,7 @@ export default function Main() {
   const [viewNameList, setViewNameList] = useState<PoketNameListResponseDto[]>([]);
   // state : 최신 리스트 상태 //
   const [currentList, setCurrentList] = useState<PoketNameListResponseDto[]>([]);
-
+  
 //            function           //
 const navigator = useNavigate();
 
@@ -41,22 +43,24 @@ const getViewPoketList = (list : PoketNameListResponseDto[]) => {
 const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
   if(!responseBody) return;
   const { code } = responseBody;
-  if(code === 'DB') return;
+  if(code === 'DB') alert('데이터베이스 오류입니다.');
   if(code !== 'SU') return;
 
   const { poketNameList } = responseBody as GetPoketNameListResponseDto;
   changeSection(poketNameList.length, 5);
   setCurrentList(poketNameList);
   getViewPoketList(poketNameList);
-  console.log(poketNameList);
 }
+
+
 
 // event handler //
 const onPoketNameListClickHandler = () => {
   navigator('');
 };
 
-const onSaveClickHandler = () => {
+// event handler : 저장하기 버튼 클릭 이벤트 //
+const onSaveClickHandler =  () => {
   navigator('/save');
 };
 
@@ -81,7 +85,7 @@ useEffect (() => {
         <div className='poket-main-contents-box'>
           <div className='poket-main-contents-title-box'>
             <div className='poket-main-contents-title'>{'저장된 포켓몬 목록'}</div>
-            <button className='poket-main-button'>{'저장하기'}</button>
+            <button className='poket-main-button' onClick={onSaveClickHandler} >{'저장하기'}</button>
           </div>
           <div className='poket-main-contents-save-box'>
             <div className='poket-main-contents-save-name'>

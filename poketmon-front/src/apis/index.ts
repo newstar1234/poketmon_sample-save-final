@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ResponseDto } from "../interfaces";
-import { GetPoketNameListResponseDto } from "../interfaces/response";
+import { GetPoketNameListResponseDto, PostPoketResponseDto } from "../interfaces/response";
+import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
 
 const API_DOMAIN = 'http://localhost:4040/api/poketmon';
 
@@ -19,3 +20,19 @@ export const getPoketNameListRequest = async () => {
               })
               return result;
 }
+
+// 개체값 저장하기 //
+const POST_POKET_URL = () => `${API_DOMAIN}/save`;
+export const postPoketRequest = async (requestBody : PostPoketRequestDto) => {
+  const result = await axios.post(POST_POKET_URL(), requestBody)
+                .then((response) => {
+                const responseBody : PostPoketResponseDto = response.data;
+                return responseBody;
+                })
+                .catch((error) => {
+                  if(!error.response.data) return null;
+                  const responseBody : ResponseDto = error.response.data;
+                  return responseBody;
+                })
+                return result;
+} 

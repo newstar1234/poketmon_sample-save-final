@@ -48,6 +48,7 @@ public class WebSecurityConfig {
         .authorizeHttpRequests(request -> request
               .requestMatchers("/", "/api/poketmon/**", "/file/**").permitAll()
               .requestMatchers(HttpMethod.GET, "/api/poketmon/**").permitAll()
+              .requestMatchers(HttpMethod.POST, "/api/poketmon/**").permitAll()
               .anyRequest().authenticated()
         )
         .exceptionHandling(exceptionHandling -> exceptionHandling

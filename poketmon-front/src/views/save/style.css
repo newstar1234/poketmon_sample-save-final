@@ -1,29 +1,50 @@
 #poket-sample-save {
   width: auto;
-  height: 960px; 
+  height: 960px;
 }
 
 .poket-save-header {
   height: 96px;
 
-  font-size: 48px;
-  font-weight: 600;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(250,255,0,0.3);
+}
+
+.poket-save-header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1000px;
+  height: 72px;
+
+  color: rgba(0,0,0,0.5);
+  font-size: 42px;
+  font-weight: 600;
+
+  border: 0.1px solid rgba(0,0,0,0.2);
+  border-radius: 30px;
+
+  background-color: rgba(255,255,255,1);
+}
+
+.poket-save-header-title:hover {
+  cursor: pointer;
+  color: rgba(0,0,0,1);
 }
 
 .poket-save-main {
-  height: 864px;
+  height: 814px;
+  margin-top: 50px;
   
-  background-color: rgba(255,0,0,0.1);
+  background-color: rgba(255,255,255,1);
 }
 
 .poket-save-input-box {
-  padding: 70px 15px 30px 15px;
+  padding: 50px 15px 50px 15px;
 
   display: flex;
   flex-direction: row;
@@ -32,6 +53,9 @@
   justify-content: center;
   align-items: center;
 
+  border-radius: 50px;
+  
+  background-color: rgba(70, 219, 219, 0.2);
 }
 
 .poket-save-input-first {
@@ -41,26 +65,87 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+  
 }
 
 .poket-save-sample-name {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-type {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-specificity {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-character {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-thing {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-input-second {
@@ -79,26 +164,99 @@
 
 .poket-save-sample-HP {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-attack {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-defence {
+  height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
   height: 30px;
 }
 
 .poket-save-sample-special-attack {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-special-defence {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-speed {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-input-third {
@@ -126,18 +284,66 @@
 
 .poket-save-sample-technology-one {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-technology-two {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-technology-three {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-sample-technology-four {
   height: 30px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
 }
 
 .poket-save-button-box {
@@ -156,7 +362,7 @@
   height: 75px;
   width: 85px;
 
-  border-radius: 15px;
+  border-radius: 50px;
   border: none;
 
   font-size: 32px;
