@@ -1,124 +1,139 @@
-#poket-sample{
-  width: auto;
-  height: 960px; 
- }
- 
- .poket-header{
-   width: auto;
-   height: 96px;
- 
-   background-color: rgba(0,0,0,0.1);
-   
-   font-size: 36px;
-   font-weight: 600;
- 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
- }
- 
- .poket-main-box {
-   width: auto;
-   height: 864px;
- 
-   margin: 20px 20px 20px 20px;
- }
- 
- .poket-main-container {
-   display: flex;
-   flex-direction: column;
- 
-   background-color: rgba(255,0,0,0.1);
- }
- 
- .poket-main-button-box {
-   height: 72px;
- 
-   display: flex;
-   flex-direction: row;
-   justify-content: right;
- 
- }
- 
- .poket-main-button {
-   width: 84px;
- 
-   font-size: 24px;
-   font-weight: 600;
- }
- 
- .poket-main-button:hover {
-   cursor: pointer;
-   background-color: rgba(0,0,0,0.3);
- }
- 
- .poket-main-list-box {
-   height: 554px;
- 
- }
- 
- .poket-main-list-title {
-   padding: 0 30px 0 30px;
- 
-   font-size: 32px;
-   font-weight: 550;
- 
-   display: flex;
-   justify-content: center;
-   align-items: center;
- 
-   background-color: rgba(255,255,255,0.5);
- }
- 
- .poket-main-list-content {
-   width: 100%;
-   height: 100%;
+#poket-main-wrapper {
+  width: 1900px;
+  height: 960px;
+  min-height: 960px;
 
-   gap: 10px;
- 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
- }
+  display: flex;
+  flex-direction: column;
 
- .poket-main-list-name-box {
+  gap: 10px;
+}
+
+.poket-main-header {
+  height: 120px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 450px;
-  width: 100%;
-  border: 0.7px solid rgba(0,0,0,0.7);
-  border-radius: 40px;
- }
- 
- .poket-main-search {
-   height: 50px;
- 
-   display: flex;
-   flex-direction: row;
- 
-   justify-content: center;
-   align-items: center;
- }
- 
- .poket-main-search-input {
-   width: 800px;
-   height: 30px;
- }
- 
- .poket-main-search-button {
-   margin-left: 20px;
- 
-   height: 30px;
- 
-   font-size: 16px;
-   font-weight: 550;
- 
- }
- 
- .poket-main-search-button:hover {
-   cursor: pointer;
- }
 
+  background-color: rgba(250,255,0,0.3);
+}
+
+.poket-main-title-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: calc(100% - 100px - 100px);
+  height: calc(100% - 15px - 15px);
+
+  border: 0.5px solid rgba(0,0,0,0.3);
+  border-radius: 30px;
+
+  background-color: rgba(255,255,255,1);
+}
+
+.poket-main-title {
+  display: flex;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.poket-main-contents-container {
+  min-height: 840px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.poket-main-contents-box {
+  margin: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgba(202,254,233,1);
+}
+
+.poket-main-contents-title-box {
+  height: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poket-main-contents-title {
+  height: 70%;
+  width: 720px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(255,255,255,1);
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.poket-main-button {
+  height: 50px;
+  width: 70px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  border: none;
+  border-radius: 50px;
+
+  cursor: pointer;
+}
+.poket-main-button:hover{
+  background-color: rgba(0,0,0,0.1);
+}
+
+.poket-main-contents-save-box {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  
+  gap: 15px;
+}
+
+.poket-main-contents-save-name {
+  width: calc(100% - 70px - 70px);
+  height: calc(100% - 40px - 40px);
+  padding: 10px;
+
+  background-color: rgba(255,255,255,1);
+
+  display: flex;
+  flex-direction: row;
+
+  border: none;
+  border-radius: 35px;
+}
+
+.poket-main-input-box {
+  display: flex;
+  justify-content: center;
+}
+
+.poket-main-input {
+  width: 580px;
+  border: 0.5px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
+
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 140%;
+  color: rgba(0,0,0,0.6);
+}

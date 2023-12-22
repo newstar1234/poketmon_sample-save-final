@@ -2,15 +2,18 @@ import React from 'react';
 import './style.css';
 import { PoketNameListResponseDto } from '../../interfaces/response';
 
-interface Props {
-  item : PoketNameListResponseDto;
-}
+// interface Props {
+//   item : PoketNameListResponseDto;
+// }
 
-export default function PoketListItem({item} : Props) {
+export default function PoketListItem() {
 
-  const { name } = item;
+  // state : properties //
+  // const { name } = item;
 
   return (
-    <div className='poket-name-badge'>{name}</div>
+    <div id='poket-name-wrapper'>
+      <div className='poket-name-badge'>{'메가리자몽x'}</div>
+    </div>
   )
 }
