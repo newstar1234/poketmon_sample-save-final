@@ -1,7 +1,13 @@
 package com.example.poketmon.controller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
+import com.example.poketmon.service.PoketService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -9,7 +15,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("api/search")
 @RequiredArgsConstructor
 public class SearchController {
-  
-  // 검색어 입력시 해당 포켓몬 불러오기 //
 
+  private final PoketService poketService;
+  
+ 
 }

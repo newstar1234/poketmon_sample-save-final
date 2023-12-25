@@ -1,15 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css';
+import { GetPoketResponseDto } from '../../interfaces/response';
+import { getPoketRequest } from '../../apis';
+import { ResponseDto } from '../../interfaces';
+import { useNavigate, useParams } from 'react-router-dom';
+import { MAIN_PATH } from '../../constants';
+import {  usePoketStore } from '../../stores';
+import { log } from 'console';
 
 export default function Result() {
+  
+  // state : poketmonNumber //
+  const { poketmonNumber } = useParams();
 
-//            state           //
-//            function           //
-//            event handler           //
-//            component           //
-//            effect           //
+  // state : 포켓몬 상태 //
+  const [poketmon, setPoketmon] = useState<GetPoketResponseDto | null>(null);
 
 
+  // function : navigator //
+  const navigator = useNavigate();
+
+  // function : 포켓몬 불러오기 //
+  const getPoketResponse = (responseBody : GetPoketResponseDto | ResponseDto | null) => {
+    if(!responseBody) return;
+    const { code } = responseBody;
+    if(code === 'DBE') alert('데이터베이스 오류입니다.');
+    if(code !== 'SU') {
+      navigator(MAIN_PATH());
+      return;
+    }
+    setPoketmon(responseBody as GetPoketResponseDto);
+    
+  }
+
+  // effect : 렌더링 //
+  useEffect(() => {
+    if(!poketmonNumber) return;
+    getPoketRequest(poketmonNumber).then(getPoketResponse);
+    console.log("렌더링");
+  }, [poketmonNumber]);
 //            render           //
   return (
     <div id='poket-sample-result'>
@@ -28,36 +57,36 @@ export default function Result() {
         </div>
         <div className='poket-sample-result-box'>
             <div className='poket-save-input-first'>
-              <div className='poket-save-sample-name'>{'이름'}</div>
-              <div className='poket-save-sample-type'>{'타입'}</div>
-              <div className='poket-save-sample-specificity'>{'특성'}</div>
-              <div className='poket-save-sample-character'>{'성격'}</div>
-              <div className='poket-save-sample-thing'>{'지닌 물건'}</div>
+              <div className='poket-save-sample-name'>{poketmon?.name}</div>
+              <div className='poket-save-sample-type'>{poketmon?.type}</div>
+              <div className='poket-save-sample-specificity'>{poketmon?.specificity}</div>
+              <div className='poket-save-sample-character'>{poketmon?.characters}</div>
+              <div className='poket-save-sample-thing'>{poketmon?.things}</div>
             </div>
             <div className='poket-save-input-second'>
               <div className='poket-save-sample-value'>{'개체치'}</div>
-              <div className='poket-save-sample-HP'>{'HP'}</div>
-              <div className='poket-save-sample-attack'>{'공격'}</div>
-              <div className='poket-save-sample-defence'>{'방어'}</div>
-              <div className='poket-save-sample-special-attack'>{'특수 공격'}</div>
-              <div className='poket-save-sample-special-defence'>{'특수 방어'}</div>
-              <div className='poket-save-sample-speed'>{'스피드'}</div>
+              <div className='poket-save-sample-HP'>{poketmon?.individualHp}</div>
+              <div className='poket-save-sample-attack'>{poketmon?.individualAttack}</div>
+              <div className='poket-save-sample-defence'>{poketmon?.individualDefence}</div>
+              <div className='poket-save-sample-special-attack'>{poketmon?.individualSpecialAttack}</div>
+              <div className='poket-save-sample-special-defence'>{poketmon?.individualSpecialDefence}</div>
+              <div className='poket-save-sample-speed'>{poketmon?.individualSpeed}</div>
             </div>
             <div className='poket-save-input-third'>
             <div className='poket-save-sample-value'>{'노력치'}</div>
-              <div className='poket-save-sample-HP'>{'HP'}</div>
-              <div className='poket-save-sample-attack'>{'공격'}</div>
-              <div className='poket-save-sample-defence'>{'방어'}</div>
-              <div className='poket-save-sample-special-attack'>{'특수 공격'}</div>
-              <div className='poket-save-sample-special-defence'>{'특수 방어'}</div>
-              <div className='poket-save-sample-speed'>{'스피드'}</div>
+              <div className='poket-save-sample-HP'>{poketmon?.effortHp}</div>
+              <div className='poket-save-sample-attack'>{poketmon?.effortAttack}</div>
+              <div className='poket-save-sample-defence'>{poketmon?.effortDefence}</div>
+              <div className='poket-save-sample-special-attack'>{poketmon?.effortSpecialAttack}</div>
+              <div className='poket-save-sample-special-defence'>{poketmon?.effortSpecialDefence}</div>
+              <div className='poket-save-sample-speed'>{poketmon?.effortSpeed}</div>
             </div>
             <div className='poket-save-input-fourth'>
               <div className='poket-save-sample-technology'>{'기술배치'}</div>
-              <div className='poket-save-sample-technology-one'>{'1'}</div>
-              <div className='poket-save-sample-technology-two'>{'2'}</div>
-              <div className='poket-save-sample-technology-three'>{'3'}</div>
-              <div className='poket-save-sample-technology-four'>{'4'}</div>
+              <div className='poket-save-sample-technology-one'>{poketmon?.technologyOne}</div>
+              <div className='poket-save-sample-technology-two'>{poketmon?.technologyTwo}</div>
+              <div className='poket-save-sample-technology-three'>{poketmon?.technologyThree}</div>
+              <div className='poket-save-sample-technology-four'>{poketmon?.technologyFour}</div>
             </div>
           </div>
       </div>

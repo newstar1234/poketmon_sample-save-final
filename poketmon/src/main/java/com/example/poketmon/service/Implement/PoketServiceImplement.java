@@ -13,7 +13,9 @@ import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
 import com.example.poketmon.dto.response.GetPoketNameResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
+import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
+import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.PoketRepository;
@@ -136,6 +138,25 @@ public class PoketServiceImplement implements PoketService{
     }
     return GetPoketNameResponseDto.success(resultSet);
 
+  }
+
+  @Override
+  public ResponseEntity<? super GetSearchPoketResponseDto> getSearchPoket(String name) {
+
+    List<PoketListResponseDto> poketList = null;
+
+    try {
+
+      List<PoketEntity> poketEntities = poketRepository.findByNameContainsOrderByPoketmonNumberDesc(name);
+      
+      poketList = PoketListResponseDto.copyPoketList(poketEntities);
+
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+
+    return GetSearchPoketResponseDto.success(poketList);
   }
   
 }

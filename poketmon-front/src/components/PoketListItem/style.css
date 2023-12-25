@@ -1,6 +1,6 @@
 #poket-name-wrapper {
-  width: 100px;
-  height: 36px;
+  width: 150px;
+  height: 48px;
 
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
 
   color: rgba(0,0,0,0.5);
 
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 140%;
 }

@@ -8,8 +8,6 @@ import { usePagination } from '../../hooks';
 import { MAIN_POKET_NAME_LIST, SAVE_PATH } from '../../constants';
 import Pagination from '../../components/Pagination';
 import { GetPoketNameListResponseDto, PoketNameListResponseDto, PostPoketResponseDto } from '../../interfaces/response';
-import PostPoketRequestDto from '../../interfaces/request/post-poket.request.dto';
-import { usePoketSaveStore } from '../../stores';
 
 
 
@@ -24,6 +22,11 @@ export default function Main() {
   const [viewNameList, setViewNameList] = useState<PoketNameListResponseDto[]>([]);
   // state : 최신 리스트 상태 //
   const [currentList, setCurrentList] = useState<PoketNameListResponseDto[]>([]);
+
+  // state : 검색어 상태 //
+  const [searchWord, setSearchWord] = useState<string>('');
+  // state : 검색어 버튼 클릭 상태 //
+  const [searchIcon, setSearchIcon] = useState<boolean>(false);
   
 //            function           //
 const navigator = useNavigate();
@@ -47,14 +50,14 @@ const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | Re
   if(code !== 'SU') return;
 
   const { poketNameList } = responseBody as GetPoketNameListResponseDto;
-  changeSection(poketNameList.length, 5);
+  changeSection(poketNameList.length, MAIN_POKET_NAME_LIST);
   setCurrentList(poketNameList);
   getViewPoketList(poketNameList);
 }
 
 
 
-// event handler //
+// event handler : 포켓몬 이름 클릭 이벤트 //
 const onPoketNameListClickHandler = () => {
   navigator('');
 };
@@ -69,6 +72,9 @@ const onResultSearchClickHandler = () => {
 };
 
 // effect //
+useEffect(() => {
+  getViewPoketList(currentList);
+}, [currentPage]);
 useEffect (() => {
   getPoketNameListRequest().then(getPoketNameListResponse);
 }, [currentSection]);
@@ -88,8 +94,8 @@ useEffect (() => {
             <button className='poket-main-button' onClick={onSaveClickHandler} >{'저장하기'}</button>
           </div>
           <div className='poket-main-contents-save-box'>
-            <div className='poket-main-contents-save-name'>
-              {viewNameList.map((item) => (<PoketListItem item={item}/>))}
+            <div className='poket-main-contents-save-name' onClick={onPoketNameListClickHandler} >
+              {viewNameList.map((item) => (<PoketListItem item={item} />))}
             </div>
             <div className='poket-main-pagination'>
             <Pagination

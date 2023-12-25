@@ -6,30 +6,26 @@
 .poket-sample-result-header {
   height: 96px;
 
-  font-size: 48px;
-  font-weight: 600;
-
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(250,255,0,0.3);
 }
 
 .poket-sample-result-header-left {
-  width: 20%;
   display: flex;
-  justify-content: left;
 }
 
 .poket-sample-result-back {
-  width: 60px;
-  height: 55px;
+  width: 40px;
+  height: 45px;
 
   margin: 5px;
 
-  font-size: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 140%;
   
   border: none;
   border-radius: 30px;
@@ -37,19 +33,21 @@
 
 .poket-sample-result-back:hover {
   cursor: pointer;
-  background-color: rgba(0,0,255,0.1);
+  background-color: rgba(0,0,0,0.1);
 }
 
 .poket-sample-result-header-right {
-  width: 80%;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 140%;
 }
 
 .poket-sample-result-main-box {
-  background-color: rgba(255,0,0,0.1);
+  background-color: rgba(70, 219, 219, 0.1);
 
   height: 784px;
 }
@@ -68,16 +66,27 @@
   background-color: rgba(255,255,255,1);
 }
 
+.poket-sample-result-search {
+  display: flex;
+  justify-content: center;
+}
+
 .poket-sample-result-search-input {
+  display: flex;
+  text-align: center;
+
   height: 30px;
   width: 380px;
+
+  border: 0.1px solid rgba(0,0,0,0.1);
+  border-radius: 20px;
 }
 
 .poket-sample-result-search-button {
   height: 35px;
   width: 80px;
 
-  font-size: 24px;
+  font-size: 18px;
 
   border-radius: 15px;
   border: none;
@@ -139,88 +148,88 @@
 .poket-save-sample-name{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-type{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-specificity{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-character{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-thing{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-value {
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 550;
 }
 
 .poket-save-sample-technology{
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 550;
 }
 
 .poket-save-sample-HP {
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .poket-save-sample-attack {
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-defence{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-special-attack {
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-special-defence{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-speed {
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 
 
 .poket-save-sample-technology-one{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-technology-two{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-technology-three{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }
 .poket-save-sample-technology-four{
   height: 30px;
 
-  font-size: 32px;
+  font-size: 28px;
 }

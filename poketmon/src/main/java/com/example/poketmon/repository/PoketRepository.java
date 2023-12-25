@@ -37,4 +37,6 @@ public interface PoketRepository extends JpaRepository<PoketEntity, Integer>{
   )
   GetPoketNameResultSet getPoketName(Integer poketmonNumber);
 
+  List<PoketEntity> findByNameContainsOrderByPoketmonNumberDesc(String name);
+
 }

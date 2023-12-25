@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './style.css';
 import { useNavigate, } from 'react-router-dom';
-import { RESULT_PATH } from '../../constants';
-import { PoketNameListResponseDto, PoketResponseDto } from '../../interfaces/response';
+import { POKET_NUMBER_VARIABLE, RESULT_PATH } from '../../constants';
+import { PoketNameListResponseDto } from '../../interfaces/response';
 
 interface Props {
   item : PoketNameListResponseDto;
@@ -18,7 +18,7 @@ export default function PoketListItem({item} : Props) {
 
   // event handler //
   const onPoketNameClickHandler = () => {
-  navigator(RESULT_PATH(poketmonNumber));
+  navigator(RESULT_PATH(POKET_NUMBER_VARIABLE));
   }
 
   // render //

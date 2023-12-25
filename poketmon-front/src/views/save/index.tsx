@@ -164,7 +164,6 @@ const onSaveClickHandler = async () => {
      technologyFour,
    }
    postPoketRequest(requestBody).then(postPoketResponse);
-   navigator(MAIN_PATH());
   }
  };
 //            component           //
