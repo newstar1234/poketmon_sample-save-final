@@ -1,9 +1,7 @@
 import ResponseDto from "../response.dto";
 
 export default interface GetPoketResponseDto extends ResponseDto {
-
-  
-  poketmonNumber : string;
+  poketmonNumber : string | number;
   name: string;  
   type : string;
   specificity : string;

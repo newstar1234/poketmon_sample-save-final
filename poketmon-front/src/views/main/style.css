@@ -145,3 +145,24 @@
   line-height: 140%;
   color: rgba(0,0,0,0.6);
 }
+
+.poket-search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: 50px;
+  width: 70px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
+  
+  background-color: rgba(0,0,0,0.1);
+
+  cursor: pointer;
+}

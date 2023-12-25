@@ -5,8 +5,6 @@ import { getPoketRequest } from '../../apis';
 import { ResponseDto } from '../../interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MAIN_PATH } from '../../constants';
-import {  usePoketStore } from '../../stores';
-import { log } from 'console';
 
 export default function Result() {
   
@@ -30,15 +28,19 @@ export default function Result() {
       return;
     }
     setPoketmon(responseBody as GetPoketResponseDto);
-    
+  }
+
+  // event handler : 메인 클릭 이벤트 //
+  const onMainClickHandler = () => {
+    navigator(MAIN_PATH());
   }
 
   // effect : 렌더링 //
   useEffect(() => {
     if(!poketmonNumber) return;
     getPoketRequest(poketmonNumber).then(getPoketResponse);
-    console.log("렌더링");
   }, [poketmonNumber]);
+
 //            render           //
   return (
     <div id='poket-sample-result'>
@@ -46,7 +48,7 @@ export default function Result() {
         <div className='poket-sample-result-header-left'>
           <button className='poket-sample-result-back'>{'뒤로'}</button>
         </div>
-        <div className='poket-sample-result-header-right'>{'포켓몬 샘플 데이터'}</div>
+        <div className='poket-sample-result-header-right' onClick={onMainClickHandler} >{'포켓몬 샘플 데이터'}</div>
       </div>
       <div className='poket-sample-result-main-box'>
         <div className='poket-sample-result-search-box'>

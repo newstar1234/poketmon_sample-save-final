@@ -5,15 +5,16 @@ import { getPoketNameListRequest, postPoketRequest } from '../../apis';
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
-import { MAIN_POKET_NAME_LIST, SAVE_PATH } from '../../constants';
+import { MAIN_POKET_NAME_LIST } from '../../constants';
 import Pagination from '../../components/Pagination';
 import { GetPoketNameListResponseDto, PoketNameListResponseDto, PostPoketResponseDto } from '../../interfaces/response';
-
 
 
 //            component           //
 export default function Main() {
 
+  // state : 검색어 path 상태 //
+  const { searchPoketWord } = useParams();
 
   // state : 페이지네이션 관련 상태 //
   const{totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection} = usePagination();
@@ -25,8 +26,9 @@ export default function Main() {
 
   // state : 검색어 상태 //
   const [searchWord, setSearchWord] = useState<string>('');
-  // state : 검색어 버튼 클릭 상태 //
-  const [searchIcon, setSearchIcon] = useState<boolean>(false);
+  // state : 검색어 ref //
+  const searchButtonRef = useRef<HTMLInputElement | null>(null);
+
   
 //            function           //
 const navigator = useNavigate();
@@ -56,7 +58,6 @@ const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | Re
 }
 
 
-
 // event handler : 포켓몬 이름 클릭 이벤트 //
 const onPoketNameListClickHandler = () => {
   navigator('');
@@ -67,8 +68,18 @@ const onSaveClickHandler =  () => {
   navigator('/save');
 };
 
-const onResultSearchClickHandler = () => {
-  navigator('/result');
+// event handler : 검색어 변경 //
+const onSearchChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
+  setSearchWord(event.target.value);
+}
+
+// event handler : 검색 버튼 클릭 이벤트 //
+// todo : 검색 다시 생각 //
+const onSearchClickHandler = () => {
+  if(!searchWord) {
+    alert('검색어를 입력해주세요.');
+    return;
+  }
 };
 
 // effect //
@@ -108,8 +119,8 @@ useEffect (() => {
           </div>
         </div>
         <div className='poket-main-input-box'>
-          <input className='poket-main-input' />
-          <button className='poket-main-button'>{'검색'}</button>
+          <input className='poket-main-input' onChange={onSearchChangeHandler} />
+          <div ref={searchButtonRef} className='poket-search-button' onClick={onSearchClickHandler} >{'검색'}</div>
         </div>
       </div>      
     </div>

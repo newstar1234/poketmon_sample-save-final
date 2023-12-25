@@ -60,7 +60,7 @@ public class MainController {
     return response;
   }
 
-  // 포켓몬 데이터 조회 //
+  // 포켓몬 데이터 조회(번호) //
   @GetMapping("/{poketmonNumber}")
   public ResponseEntity<? super GetPoketResponseDto> getPoket(
     @PathVariable(value = "poketmonNumber", required = true) Integer poketmonNumber
@@ -86,7 +86,7 @@ public class MainController {
   }
 
    // 검색어 입력시 해당 포켓몬 불러오기 //
-  @GetMapping("/{name}")
+  @GetMapping("/search/{name}")
   public ResponseEntity <? super GetSearchPoketResponseDto> getSearchPoket (
     @PathVariable("name") String name
   ) {

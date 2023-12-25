@@ -4,7 +4,6 @@ import { GetPoketNameListResponseDto, GetPoketResponseDto, PostPoketResponseDto 
 import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
 
 const API_DOMAIN = 'http://localhost:4040/api/poketmon';
-const API_SEARCH_DOMAIN = 'http://localhost:4040/api';
 
 // 포켓몬 이름 리스트 불러오기 //
 const GET_POKET_NAME_LIST_URL = () => `${API_DOMAIN}/name-list`;

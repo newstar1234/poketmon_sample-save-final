@@ -1,3 +1,5 @@
+import ResponseDto from "../response.dto";
+
 export default interface PoketResponseDto {
   poketmonNumber : string;
   name: string;  

@@ -44,6 +44,8 @@
   font-size: 34px;
   font-weight: 500;
   line-height: 140%;
+
+  cursor: pointer;
 }
 
 .poket-sample-result-main-box {
