@@ -4,6 +4,7 @@ import GetPoketResponseDto from "./get-poket.response.dto";
 import PoketListResponseDto from "./poket-list.response.dto";
 import GetPoketListResponseDto from "./get-poket-list.response.dto";
 import PatchPoketResponseDto from "./patch-poket.response.dto";
+import DeletePoketResponseDto from "./delete-poket.response.dto";
 
 export type {
   PoketResponseDto,
@@ -12,4 +13,5 @@ export type {
   PoketListResponseDto,
   GetPoketListResponseDto,
   PatchPoketResponseDto,
+  DeletePoketResponseDto
 }

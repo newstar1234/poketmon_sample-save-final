@@ -237,47 +237,47 @@ useEffect(() => {
 
 //            render           //
   return (
-    <div id='poket-sample-save'>
-      <div className='poket-save-header'>
-        <div className='poket-save-header-title' onClick={onMainClickHandler} >{'포켓몬 샘플 데이터'}</div>
+    <div id='poket-sample-update'>
+      <div className='poket-update-header'>
+        <div className='poket-update-header-title' onClick={onMainClickHandler} >{'포켓몬 샘플 데이터'}</div>
       </div>
-      <div className='poket-save-main'>
-        <div className='poket-save-input-box'>
-          <div className='poket-save-input-first'>
-            <input ref={nameRef} className='poket-save-sample-name' placeholder='이름' onChange={onNameChangeHandler} value={name} ></input>
-            <input ref={typeRef} className='poket-save-sample-type' placeholder='타입' onChange={onTypeChangeHandler} value={type}></input>
-            <input ref={specificityRef} className='poket-save-sample-specificity' placeholder='특성' onChange={onSpecificityChangeHandler} value={specificity}></input>
-            <input ref={charactersRef} className='poket-save-sample-character' placeholder='성격' onChange={onCharactersChangeHandler} value={characters} ></input>
-            <input ref={thingsRef} className='poket-save-sample-thing' placeholder='지닌 물건' onChange={onThingsChangeHandler} value={things}></input>
+      <div className='poket-update-main'>
+        <div className='poket-update-input-box'>
+          <div className='poket-update-input-first'>
+            <input ref={nameRef} className='poket-update-sample-name' placeholder='이름' onChange={onNameChangeHandler} value={name} ></input>
+            <input ref={typeRef} className='poket-update-sample-type' placeholder='타입' onChange={onTypeChangeHandler} value={type}></input>
+            <input ref={specificityRef} className='poket-update-sample-specificity' placeholder='특성' onChange={onSpecificityChangeHandler} value={specificity}></input>
+            <input ref={charactersRef} className='poket-update-sample-character' placeholder='성격' onChange={onCharactersChangeHandler} value={characters} ></input>
+            <input ref={thingsRef} className='poket-update-sample-thing' placeholder='지닌 물건' onChange={onThingsChangeHandler} value={things}></input>
           </div>
-          <div className='poket-save-input-second'>
-            <div className='poket-save-sample-value'>{'개체치'}</div>
-            <input ref={individualHpRef} className='poket-save-sample-HP' placeholder='HP' onChange={onIndividualHpChangeHandler} value={individualHp} ></input>
-            <input ref={individualAttackRef} className='poket-save-sample-attack' placeholder='공격' onChange={onIndividualAttackChangeHandler} value={individualAttack} ></input>
-            <input ref={individualDefenceRef} className='poket-save-sample-defence' placeholder='방어' onChange={onIndividualDefenceChangeHandler} value={individualDefence}></input>
-            <input ref={individualSpecialAttackRef} className='poket-save-sample-special-attack' placeholder='특수 공격' onChange={onIndividualSpecialAttackChangeHandler} value={individualSpecialAttack} ></input>
-            <input ref={individualSpecialDefenceRef} className='poket-save-sample-special-defence' placeholder='특수 방어' onChange={onIndividualSpecialDefenceChangeHandler} value={individualSpecialDefence} ></input>
-            <input ref={individualSpeedRef} className='poket-save-sample-speed' placeholder='스피드' onChange={onIndividualSpeedChangeHandler} value={individualSpeed}></input>
+          <div className='poket-update-input-second'>
+            <div className='poket-update-sample-value'>{'개체치'}</div>
+            <input ref={individualHpRef} className='poket-update-sample-HP' placeholder='HP' onChange={onIndividualHpChangeHandler} value={individualHp} ></input>
+            <input ref={individualAttackRef} className='poket-update-sample-attack' placeholder='공격' onChange={onIndividualAttackChangeHandler} value={individualAttack} ></input>
+            <input ref={individualDefenceRef} className='poket-update-sample-defence' placeholder='방어' onChange={onIndividualDefenceChangeHandler} value={individualDefence}></input>
+            <input ref={individualSpecialAttackRef} className='poket-update-sample-special-attack' placeholder='특수 공격' onChange={onIndividualSpecialAttackChangeHandler} value={individualSpecialAttack} ></input>
+            <input ref={individualSpecialDefenceRef} className='poket-update-sample-special-defence' placeholder='특수 방어' onChange={onIndividualSpecialDefenceChangeHandler} value={individualSpecialDefence} ></input>
+            <input ref={individualSpeedRef} className='poket-update-sample-speed' placeholder='스피드' onChange={onIndividualSpeedChangeHandler} value={individualSpeed}></input>
           </div>
-          <div className='poket-save-input-third'>
-          <div className='poket-save-sample-value'>{'노력치'}</div>
-            <input ref={effortHpRef} className='poket-save-sample-HP' placeholder='HP' onChange={onEffortHpChangeHandler} value={effortHp} ></input>
-            <input ref={effortAttackeRef} className='poket-save-sample-attack' placeholder='공격' onChange={onEffortAttackpChangeHandler} value={effortAttack} ></input>
-            <input ref={effortDefenceRef} className='poket-save-sample-defence' placeholder='방어' onChange={onEffortDefenceChangeHandler} value={effortDefence} ></input>
-            <input ref={effortSpecialAttackeRef} className='poket-save-sample-special-attack' placeholder='특수 공격' onChange={onEffortSpecialAttackChangeHandler} value={effortSpecialAttack} ></input>
-            <input ref={effortSpecialDefenceRef} className='poket-save-sample-special-defence' placeholder='특수 방어' onChange={onEffortSpecialDefenceChangeHandler} value={effortSpecialDefence} ></input>
-            <input ref={effortSpeedRef} className='poket-save-sample-speed' placeholder='스피드' onChange={onEffortSpeedChangeHandler}value={effortSpeed}></input>
+          <div className='poket-update-input-third'>
+          <div className='poket-update-sample-value'>{'노력치'}</div>
+            <input ref={effortHpRef} className='poket-update-sample-HP' placeholder='HP' onChange={onEffortHpChangeHandler} value={effortHp} ></input>
+            <input ref={effortAttackeRef} className='poket-update-sample-attack' placeholder='공격' onChange={onEffortAttackpChangeHandler} value={effortAttack} ></input>
+            <input ref={effortDefenceRef} className='poket-update-sample-defence' placeholder='방어' onChange={onEffortDefenceChangeHandler} value={effortDefence} ></input>
+            <input ref={effortSpecialAttackeRef} className='poket-update-sample-special-attack' placeholder='특수 공격' onChange={onEffortSpecialAttackChangeHandler} value={effortSpecialAttack} ></input>
+            <input ref={effortSpecialDefenceRef} className='poket-update-sample-special-defence' placeholder='특수 방어' onChange={onEffortSpecialDefenceChangeHandler} value={effortSpecialDefence} ></input>
+            <input ref={effortSpeedRef} className='poket-update-sample-speed' placeholder='스피드' onChange={onEffortSpeedChangeHandler}value={effortSpeed}></input>
           </div>
-          <div className='poket-save-input-fourth'>
-            <div className='poket-save-sample-technology'>{'기술배치'}</div>
-            <input ref={technologyOneRef} className='poket-save-sample-technology-one' onChange={onTechnologyOneChangeHandler} value={technologyOne} ></input>
-            <input ref={technologyTwoRef} className='poket-save-sample-technology-two' onChange={onTechnologyTwoChangeHandler}value={technologyTwo} ></input>
-            <input ref={technologyThreeRef} className='poket-save-sample-technology-three' onChange={onTechnologyThreeChangeHandler} value={technologyThree}></input>
-            <input ref={technologyFourRef} className='poket-save-sample-technology-four' onChange={onTechnologyFourChangeHandler}value={technologyFour} ></input>
+          <div className='poket-update-input-fourth'>
+            <div className='poket-update-sample-technology'>{'기술배치'}</div>
+            <input ref={technologyOneRef} className='poket-update-sample-technology-one' onChange={onTechnologyOneChangeHandler} value={technologyOne} ></input>
+            <input ref={technologyTwoRef} className='poket-update-sample-technology-two' onChange={onTechnologyTwoChangeHandler}value={technologyTwo} ></input>
+            <input ref={technologyThreeRef} className='poket-update-sample-technology-three' onChange={onTechnologyThreeChangeHandler} value={technologyThree}></input>
+            <input ref={technologyFourRef} className='poket-update-sample-technology-four' onChange={onTechnologyFourChangeHandler}value={technologyFour} ></input>
           </div>
         </div>
-          <div className='poket-save-button-box' >
-            <button className='poket-save-button' onClick={onUpdateButtonClickHandler} >{'수정'}</button>
+          <div className='poket-update-button-box' >
+            <button className='poket-update-button' onClick={onUpdateButtonClickHandler} >{'수정'}</button>
           </div>
       </div>
     </div>

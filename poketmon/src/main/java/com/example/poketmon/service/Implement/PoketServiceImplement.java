@@ -1,6 +1,7 @@
 package com.example.poketmon.service.Implement;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
+import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
@@ -119,6 +121,23 @@ public class PoketServiceImplement implements PoketService{
       return ResponseDto.databaseError();
     }
     return GetPoketListResponseDto.success(poketList);
+  }
+
+  @Override
+  public ResponseEntity<? super GetSearchPoketResponseDto> getSearch(String name) {
+
+    List<PoketListResponseDto> poketList = null;
+
+    try {
+
+      List<PoketEntity> poketEntities = poketRepository.findByNameContainsOrderByPoketmonNumberDesc(name);
+      poketList = PoketListResponseDto.getSearchList(poketEntities);
+      
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+    return GetSearchPoketResponseDto.success(poketList);
   }
 
   

@@ -17,6 +17,7 @@ import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
+import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.service.PoketService;
@@ -75,5 +76,13 @@ public class MainController {
     ResponseEntity<? super GetPoketListResponseDto> response = poketService.getPoketList(section);
     return response;
   }
-  
+
+  // 검색 //
+  @GetMapping("/search/{name}")
+  public ResponseEntity<? super GetSearchPoketResponseDto> getSearch(
+    @PathVariable String name
+  ){
+    ResponseEntity<? super GetSearchPoketResponseDto> response = poketService.getSearch(name);
+    return response;
+  }
 }

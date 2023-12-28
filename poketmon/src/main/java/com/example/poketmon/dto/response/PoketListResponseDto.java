@@ -3,6 +3,7 @@ package com.example.poketmon.dto.response;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.resultSet.PoketListResultSet;
 
 import lombok.AllArgsConstructor;
@@ -72,4 +73,39 @@ public class PoketListResponseDto{
     return poketList;
   }
 
+  // 수정 //
+   public PoketListResponseDto(PoketEntity poketEntity) {
+    this.poketmonNumber = poketEntity.getPoketmonNumber();
+    this.name = poketEntity.getName();
+    this.type = poketEntity. getType();
+    this.specificity = poketEntity.getSpecificity();
+    this.characters = poketEntity.getCharacters();
+    this.things = poketEntity.getThings();
+    this.individualHp = poketEntity.getIndividualHp();
+    this.individualAttack = poketEntity.getIndividualAttack();
+    this.individualDefence = poketEntity.getIndividualDefence();
+    this.individualSpecialAttack = poketEntity.getIndividualSpecialAttack();
+    this.individualSpecialDefence = poketEntity.getIndividualSpecialDefence();
+    this.individualSpeed = poketEntity.getIndividualSpeed();
+    this.effortHp = poketEntity.getEffortHp();
+    this.effortAttack = poketEntity.getEffortAttack();
+    this.effortDefence = poketEntity.getEffortDefence();
+    this.effortSpecialAttack = poketEntity.getEffortSpecialAttack();
+    this.effortSpecialDefence = poketEntity.getEffortSpecialDefence();
+    this.effortSpeed = poketEntity.getEffortSpeed();
+    this.technologyOne = poketEntity.getTechnologyOne();
+    this.technologyTwo = poketEntity.getTechnologyTwo();
+    this.technologyThree = poketEntity.getTechnologyThree();
+    this.technologyFour = poketEntity.getTechnologyFour();
+  }
+
+  public static List<PoketListResponseDto> getSearchList(List<PoketEntity> poketEntity) {
+    List<PoketListResponseDto> poketList = new ArrayList<>();
+
+    for(PoketEntity entity:poketEntity) {
+      PoketListResponseDto poket = new PoketListResponseDto(entity);
+      poketList.add(poket);
+    }
+    return poketList;
+  }
 }

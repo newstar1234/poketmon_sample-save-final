@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ResponseDto } from "../interfaces";
-import { GetPoketListResponseDto, GetPoketResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
+import { DeletePoketResponseDto, GetPoketListResponseDto, GetPoketResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
 import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
 import PatchPoketRequestDto from "../interfaces/request/patch-poket.request.dto";
 
@@ -52,6 +52,22 @@ export const patchPoketRequest = async (poketmonNumber: number|string, requestBo
                   return responseBody;
                 })
                 return result;
+}
+
+// 삭제 
+const DELETE_POKET_URL = (poketmonNumber: number|string) => `${API_DOMAIN}/${poketmonNumber}`;
+export const deletePoketRequest = async (poketmonNumber: number|string) => {
+  const result = await axios.delete(DELETE_POKET_URL(poketmonNumber))
+              .then(response => {
+                const responseBody: DeletePoketResponseDto = response.data;
+                return responseBody;
+              })
+              .catch((error) => {
+                if(!error.response.data) return null;
+                const responseBody : ResponseDto = error.response.data;
+                return responseBody;
+              })
+              return result;
 }
 
 // 포켓몬 저장내용 불러오기 //

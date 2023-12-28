@@ -7,6 +7,7 @@ import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
 import com.example.poketmon.dto.response.GetPoketListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
+import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 
@@ -24,5 +25,6 @@ public interface PoketService {
   // 포켓몬 리스트 조회 //
   ResponseEntity<? super GetPoketListResponseDto> getPoketList(Integer section);
 
-  
+  // 검색 //
+  ResponseEntity<? super GetSearchPoketResponseDto> getSearch(String name);
 }

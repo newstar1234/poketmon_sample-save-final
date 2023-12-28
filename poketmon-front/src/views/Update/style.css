@@ -1,9 +1,9 @@
-#poket-sample-save {
+#poket-sample-update {
   width: auto;
   height: 960px;
 }
 
-.poket-save-header {
+.poket-update-header {
   height: 96px;
 
   display: flex;
@@ -13,7 +13,7 @@
   background-color: rgba(250,255,0,0.3);
 }
 
-.poket-save-header-title {
+.poket-update-header-title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,19 +31,19 @@
   background-color: rgba(255,255,255,1);
 }
 
-.poket-save-header-title:hover {
+.poket-update-header-title:hover {
   cursor: pointer;
   color: rgba(0,0,0,1);
 }
 
-.poket-save-main {
+.poket-update-main {
   height: 814px;
   margin-top: 50px;
   
   background-color: rgba(255,255,255,1);
 }
 
-.poket-save-input-box {
+.poket-update-input-box {
   padding: 50px 15px 50px 15px;
 
   display: flex;
@@ -58,7 +58,7 @@
   background-color: rgba(70, 219, 219, 0.2);
 }
 
-.poket-save-input-first {
+.poket-update-input-first {
   display: flex;
   flex-direction: column;
 
@@ -68,7 +68,7 @@
   
 }
 
-.poket-save-sample-name {
+.poket-update-sample-name {
   height: 30px;
   padding: 5px;
 
@@ -84,7 +84,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-type {
+.poket-update-sample-type {
   height: 30px;
   padding: 5px;
 
@@ -100,7 +100,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-specificity {
+.poket-update-sample-specificity {
   height: 30px;
   padding: 5px;
 
@@ -116,7 +116,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-character {
+.poket-update-sample-character {
   height: 30px;
   padding: 5px;
 
@@ -132,7 +132,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-thing {
+.poket-update-sample-thing {
   height: 30px;
   padding: 5px;
 
@@ -148,7 +148,7 @@
   border-radius: 50px;
 }
 
-.poket-save-input-second {
+.poket-update-input-second {
   display: flex;
   flex-direction: column;
 
@@ -157,12 +157,12 @@
   gap: 30px;
 }
 
-.poket-save-sample-value{
+.poket-update-sample-value{
   font-size: 24px;
   font-weight: 600;
 }
 
-.poket-save-sample-HP {
+.poket-update-sample-HP {
   height: 30px;
   padding: 5px;
 
@@ -178,7 +178,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-attack {
+.poket-update-sample-attack {
   height: 30px;
   padding: 5px;
 
@@ -194,7 +194,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-defence {
+.poket-update-sample-defence {
   height: 30px;
   padding: 5px;
 
@@ -211,7 +211,7 @@
   height: 30px;
 }
 
-.poket-save-sample-special-attack {
+.poket-update-sample-special-attack {
   height: 30px;
   padding: 5px;
 
@@ -227,7 +227,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-special-defence {
+.poket-update-sample-special-defence {
   height: 30px;
   padding: 5px;
 
@@ -243,7 +243,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-speed {
+.poket-update-sample-speed {
   height: 30px;
   padding: 5px;
 
@@ -259,7 +259,7 @@
   border-radius: 50px;
 }
 
-.poket-save-input-third {
+.poket-update-input-third {
   display: flex;
   flex-direction: column;
 
@@ -268,7 +268,7 @@
   gap: 30px;
 }
 
-.poket-save-input-fourth {
+.poket-update-input-fourth {
   display: flex;
   flex-direction: column;
 
@@ -277,12 +277,12 @@
   gap: 30px;
 }
 
-.poket-save-sample-technology {
+.poket-update-sample-technology {
   font-size: 24px;
   font-weight: 600;
 }
 
-.poket-save-sample-technology-one {
+.poket-update-sample-technology-one {
   height: 30px;
   padding: 5px;
 
@@ -298,7 +298,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-technology-two {
+.poket-update-sample-technology-two {
   height: 30px;
   padding: 5px;
 
@@ -314,7 +314,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-technology-three {
+.poket-update-sample-technology-three {
   height: 30px;
   padding: 5px;
 
@@ -330,7 +330,7 @@
   border-radius: 50px;
 }
 
-.poket-save-sample-technology-four {
+.poket-update-sample-technology-four {
   height: 30px;
   padding: 5px;
 
@@ -346,7 +346,7 @@
   border-radius: 50px;
 }
 
-.poket-save-button-box {
+.poket-update-button-box {
   margin-top: 30px;
 
   height: 50px;
@@ -358,7 +358,7 @@
 
 }
 
-.poket-save-button {
+.poket-update-button {
   height: 75px;
   width: 85px;
 
@@ -368,6 +368,6 @@
   font-size: 32px;
 }
 
-.poket-save-button:hover {
+.poket-update-button:hover {
   cursor: pointer;
 }

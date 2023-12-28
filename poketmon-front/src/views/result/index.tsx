@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './style.css';
-import { GetPoketResponseDto, PoketResponseDto } from '../../interfaces/response';
-import { getPoketRequest } from '../../apis';
+import { DeletePoketResponseDto, GetPoketResponseDto, PoketResponseDto } from '../../interfaces/response';
+import { deletePoketRequest, getPoketRequest } from '../../apis';
 import { ResponseDto } from '../../interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MAIN_PATH, UPDATE_PATH } from '../../constants';
@@ -32,6 +32,17 @@ export default function Result() {
     setPoketmon(poket);
   }
 
+  // function : delete poket response //
+  const deletePoketResponse = (responseBody: DeletePoketResponseDto | ResponseDto | null) => {
+    if(!responseBody) return;
+    const { code } = responseBody;
+    if(code === 'DBE') alert('데이터베이스 오류입니다.');
+    if(code !== 'SU') return;
+
+    alert('삭제 완료!!');
+    navigator(MAIN_PATH());
+  }
+
   // event handler : 메인 클릭 이벤트 //
   const onMainClickHandler = () => {
     navigator(MAIN_PATH());
@@ -40,6 +51,12 @@ export default function Result() {
   const onUpdateClickHandler = () => {
     if(!poketmonNumber) return;
     navigator(UPDATE_PATH(poketmonNumber));
+  }
+
+  // event handler : 삭제 버튼 클릭 이벤트 //
+  const onDeleteClickHandler = () => {
+    if(!poketmonNumber) return;
+    deletePoketRequest(poketmonNumber).then(deletePoketResponse);
   }
 
   // effect : 렌더링 //
@@ -63,7 +80,7 @@ export default function Result() {
         </div>
         <div className='poket-sample-button-box'>
             <div className='poket-sample-button' onClick={onUpdateClickHandler} >{'수정'}</div>
-            <div className='poket-sample-button'>{'삭제'}</div>
+            <div className='poket-sample-button' onClick={onDeleteClickHandler} >{'삭제'}</div>
         </div>
         <div className='poket-sample-result-box'>
           <div className='poket-save-input-first'>
