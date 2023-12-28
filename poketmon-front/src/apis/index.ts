@@ -1,16 +1,16 @@
 import axios from "axios";
 import { ResponseDto } from "../interfaces";
-import { GetPoketNameListResponseDto, GetPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
+import { GetPoketListResponseDto, GetPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
 import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
 
 const API_DOMAIN = 'http://localhost:4040/api/poketmon';
 
-// 포켓몬 이름 리스트 불러오기 //
-const GET_POKET_NAME_LIST_URL = () => `${API_DOMAIN}/name-list`;
-export const getPoketNameListRequest = async () => {
-  const result = await axios.get(GET_POKET_NAME_LIST_URL())
+// 포켓몬 리스트 불러오기 //
+const GET_POKET_LIST_URL = (section: number|string) => `${API_DOMAIN}/list/${section}`;
+export const getPoketListRequest = async (section: number|string) => {
+  const result = await axios.get(GET_POKET_LIST_URL(section))
               .then((response) => {
-                const responseBody : GetPoketNameListResponseDto = response.data;
+                const responseBody : GetPoketListResponseDto = response.data;
                 return responseBody;
               })
               .catch((error) => {

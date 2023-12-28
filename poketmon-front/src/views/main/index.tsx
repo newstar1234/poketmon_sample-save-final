@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getPoketNameListRequest, postPoketRequest } from '../../apis';
+import { useNavigate, useParams } from "react-router-dom";
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
 import { MAIN_POKET_NAME_LIST } from '../../constants';
 import Pagination from '../../components/Pagination';
-import { GetPoketNameListResponseDto, PoketNameListResponseDto, PostPoketResponseDto } from '../../interfaces/response';
+import { GetPoketListResponseDto, PoketListResponseDto } from '../../interfaces/response';
+import { getPoketListRequest } from '../../apis';
 
 
 //            component           //
@@ -19,10 +19,10 @@ export default function Main() {
   // state : 페이지네이션 관련 상태 //
   const{totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection} = usePagination();
 
-  // state : 현재 페이지에서 보여줄 포켓몬 이름 리스트상태 //
-  const [viewNameList, setViewNameList] = useState<PoketNameListResponseDto[]>([]);
+  // state : 현재 페이지에서 보여줄 포켓몬 리스트상태 //
+  const [viewList, setViewList] = useState<PoketListResponseDto[]>([]);
   // state : 최신 리스트 상태 //
-  const [currentList, setCurrentList] = useState<PoketNameListResponseDto[]>([]);
+  const [currentList, setCurrentList] = useState<PoketListResponseDto[]>([]);
 
   // state : 검색어 상태 //
   const [searchWord, setSearchWord] = useState<string>('');
@@ -36,25 +36,25 @@ const navigator = useNavigate();
 
 //            function           //
 // 페이지네이션 함수 //
-const getViewPoketList = (list : PoketNameListResponseDto[]) => {
+const getViewPoketList = (list : PoketListResponseDto[]) => {
   const startIndex = MAIN_POKET_NAME_LIST * (currentPage -1);
   const lastIndex = list.length > MAIN_POKET_NAME_LIST * currentPage ? 
                     MAIN_POKET_NAME_LIST * currentPage : list.length;
-  const viewNameList = list.slice(startIndex, lastIndex);
-  setViewNameList(viewNameList);
+  const viewList = list.slice(startIndex, lastIndex);
+  setViewList(viewList);
 };
 
 //            function           //
-const getPoketNameListResponse = (responseBody: GetPoketNameListResponseDto | ResponseDto | null) => {
+const getPoketNameListResponse = (responseBody: GetPoketListResponseDto | ResponseDto | null) => {
   if(!responseBody) return;
   const { code } = responseBody;
   if(code === 'DB') alert('데이터베이스 오류입니다.');
   if(code !== 'SU') return;
 
-  const { poketNameList } = responseBody as GetPoketNameListResponseDto;
-  changeSection(poketNameList.length, MAIN_POKET_NAME_LIST);
-  setCurrentList(poketNameList);
-  getViewPoketList(poketNameList);
+  const { poketList } = responseBody as GetPoketListResponseDto;
+  changeSection(poketList.length, MAIN_POKET_NAME_LIST);
+  setCurrentList(poketList);
+  getViewPoketList(poketList);
 }
 
 
@@ -87,7 +87,7 @@ useEffect(() => {
   getViewPoketList(currentList);
 }, [currentPage]);
 useEffect (() => {
-  getPoketNameListRequest().then(getPoketNameListResponse);
+  getPoketListRequest(currentSection).then(getPoketNameListResponse);
 }, [currentSection]);
 
 //            render           //
@@ -106,7 +106,7 @@ useEffect (() => {
           </div>
           <div className='poket-main-contents-save-box'>
             <div className='poket-main-contents-save-name' onClick={onPoketNameListClickHandler} >
-              {viewNameList.map((item) => (<PoketListItem item={item} />))}
+              {viewList.map((item) => (<PoketListItem item={item} />))}
             </div>
             <div className='poket-main-pagination'>
             <Pagination

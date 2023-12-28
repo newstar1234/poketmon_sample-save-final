@@ -1,5 +1,6 @@
 package com.example.poketmon.service.Implement;
 
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -8,11 +9,14 @@ import com.example.poketmon.dto.ResponseDto;
 import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
+import com.example.poketmon.dto.response.GetPoketListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
+import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.PoketRepository;
+import com.example.poketmon.repository.resultSet.PoketListResultSet;
 import com.example.poketmon.service.PoketService;
 
 import lombok.RequiredArgsConstructor;
@@ -96,6 +100,25 @@ public class PoketServiceImplement implements PoketService{
       return ResponseDto.databaseError();
     }
     return GetPoketResponseDto.success(poketEntity);
+  }
+
+  @Override
+  public ResponseEntity<? super GetPoketListResponseDto> getPoketList(Integer section) {
+
+    List<PoketListResponseDto> poketList = null;
+
+    try {
+    
+      Integer limit = (section -1) * 100;
+      List<PoketListResultSet> resultSets = poketRepository.getPoketList(limit);
+
+      poketList = PoketListResponseDto.copyPoketList(resultSets);
+      
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+    return GetPoketListResponseDto.success(poketList);
   }
 
   

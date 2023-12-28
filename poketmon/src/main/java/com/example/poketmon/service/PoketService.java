@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
+import com.example.poketmon.dto.response.GetPoketListResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
@@ -19,6 +20,9 @@ public interface PoketService {
   ResponseEntity<? super DeletePoketResponseDto> poketDelete(Integer poketmonNumber);
   // 포켓몬 데이터 조회 //
   ResponseEntity<? super GetPoketResponseDto> getPoket(Integer poketmonNumber);
+
+  // 포켓몬 리스트 조회 //
+  ResponseEntity<? super GetPoketListResponseDto> getPoketList(Integer section);
 
   
 }
