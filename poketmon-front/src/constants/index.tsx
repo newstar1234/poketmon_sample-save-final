@@ -1,7 +1,7 @@
 export const MAIN_PATH = () =>  '/';
-export const SAVE_PATH = () => '/save';
-export const RESULT_PATH = (poketmonNumber : string | number) => `/result/${poketmonNumber}`;
-export const POKET_NUMBER_VARIABLE = ':poketmonNumber';
+export const SAVE_PATH = () => 'save';
+
+export const RESULT_PATH = (poketmonNumber : number | string) => `result/${poketmonNumber}`;
 
 
 export const MAIN_POKET_NAME_LIST = 10;

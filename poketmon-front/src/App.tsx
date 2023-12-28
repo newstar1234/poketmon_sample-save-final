@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import './App.css';
-import { MAIN_PATH, POKET_NUMBER_VARIABLE, RESULT_PATH, SAVE_PATH } from './constants';
+import { MAIN_PATH, RESULT_PATH, SAVE_PATH } from './constants';
 import Main from './views/main';
 import Save from './views/save';
 import Result from './views/result';
@@ -11,12 +11,15 @@ import Result from './views/result';
 // description : save - '/save' => SAVE_PATH //
 
 function App() {
+
+  const { poketmonNumber } = useParams();
+
   return (
     <Router>
       <Routes>
-        <Route path={MAIN_PATH()} element={<Main/>} />
+        <Route path={MAIN_PATH()} element={<Main/>}/>
         <Route path={SAVE_PATH()} element={<Save/>} />
-        <Route path={RESULT_PATH(POKET_NUMBER_VARIABLE)} element={<Result/>} />
+        <Route path={RESULT_PATH(':poketmonNumber')} element={<Result/>} />
       </Routes>
     </Router>
   );

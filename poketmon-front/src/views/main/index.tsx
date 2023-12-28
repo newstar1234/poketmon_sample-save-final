@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
-import { MAIN_POKET_NAME_LIST } from '../../constants';
+import { MAIN_POKET_NAME_LIST, SAVE_PATH } from '../../constants';
 import Pagination from '../../components/Pagination';
 import { GetPoketListResponseDto, PoketListResponseDto } from '../../interfaces/response';
 import { getPoketListRequest } from '../../apis';
@@ -14,7 +14,7 @@ import { getPoketListRequest } from '../../apis';
 export default function Main() {
 
   // state : 검색어 path 상태 //
-  const { searchPoketWord } = useParams();
+  const { poketmonNumber } = useParams();
 
   // state : 페이지네이션 관련 상태 //
   const{totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection} = usePagination();
@@ -45,7 +45,7 @@ const getViewPoketList = (list : PoketListResponseDto[]) => {
 };
 
 //            function           //
-const getPoketNameListResponse = (responseBody: GetPoketListResponseDto | ResponseDto | null) => {
+const getPoketListResponse = (responseBody: GetPoketListResponseDto | ResponseDto | null) => {
   if(!responseBody) return;
   const { code } = responseBody;
   if(code === 'DB') alert('데이터베이스 오류입니다.');
@@ -58,14 +58,9 @@ const getPoketNameListResponse = (responseBody: GetPoketListResponseDto | Respon
 }
 
 
-// event handler : 포켓몬 이름 클릭 이벤트 //
-const onPoketNameListClickHandler = () => {
-  navigator('');
-};
-
 // event handler : 저장하기 버튼 클릭 이벤트 //
 const onSaveClickHandler =  () => {
-  navigator('/save');
+  navigator(SAVE_PATH());
 };
 
 // event handler : 검색어 변경 //
@@ -87,7 +82,7 @@ useEffect(() => {
   getViewPoketList(currentList);
 }, [currentPage]);
 useEffect (() => {
-  getPoketListRequest(currentSection).then(getPoketNameListResponse);
+  getPoketListRequest(currentSection).then(getPoketListResponse);
 }, [currentSection]);
 
 //            render           //
@@ -105,7 +100,7 @@ useEffect (() => {
             <button className='poket-main-button' onClick={onSaveClickHandler} >{'저장하기'}</button>
           </div>
           <div className='poket-main-contents-save-box'>
-            <div className='poket-main-contents-save-name' onClick={onPoketNameListClickHandler} >
+            <div className='poket-main-contents-save-name' >
               {viewList.map((item) => (<PoketListItem item={item} />))}
             </div>
             <div className='poket-main-pagination'>

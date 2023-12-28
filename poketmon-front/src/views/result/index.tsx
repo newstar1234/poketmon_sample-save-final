@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './style.css';
-import { GetPoketResponseDto } from '../../interfaces/response';
+import { GetPoketResponseDto, PoketResponseDto } from '../../interfaces/response';
 import { getPoketRequest } from '../../apis';
 import { ResponseDto } from '../../interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -12,7 +12,7 @@ export default function Result() {
   const { poketmonNumber } = useParams();
 
   // state : 포켓몬 상태 //
-  const [poketmon, setPoketmon] = useState<GetPoketResponseDto | null>(null);
+  const [poketmon, setPoketmon] = useState<PoketResponseDto | null>(null);
 
 
   // function : navigator //
@@ -27,7 +27,9 @@ export default function Result() {
       navigator(MAIN_PATH());
       return;
     }
-    setPoketmon(responseBody as GetPoketResponseDto);
+    const poket: PoketResponseDto = { ...responseBody as GetPoketResponseDto};
+
+    setPoketmon(poket);
   }
 
   // event handler : 메인 클릭 이벤트 //
