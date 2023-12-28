@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
-import { MAIN_PATH, RESULT_PATH, SAVE_PATH } from '../../constants';
-import {  GetPoketResponseDto, PoketListResponseDto } from '../../interfaces/response';
-import { getPoketRequest } from '../../apis';
-import { ResponseDto } from '../../interfaces';
+import {  RESULT_PATH } from '../../constants';
+import { PoketListResponseDto } from '../../interfaces/response';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {

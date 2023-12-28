@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ResponseDto } from "../interfaces";
-import { DeletePoketResponseDto, GetPoketListResponseDto, GetPoketResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
+import { DeletePoketResponseDto, GetPoketListResponseDto, GetPoketResponseDto, GetSearchPoketListResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
 import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
 import PatchPoketRequestDto from "../interfaces/request/patch-poket.request.dto";
 
@@ -84,4 +84,20 @@ export const getPoketRequest = async (poketmonNumber : number | string) => {
                 return responseBody;
               })
               return result;
+}
+
+// 검색 리스트 불러오기 
+const GET_SEARCH_POKET_LIST_URL = (name: string) => `${API_DOMAIN}/search/${name}`;
+export const getSearchPoketListRequest = async (name : string) => {
+  const result = await axios.get(GET_SEARCH_POKET_LIST_URL(name))
+            .then(response => {
+              const responseBody: GetSearchPoketListResponseDto = response.data;
+              return responseBody;
+            })
+            .catch(error => {
+              if(!error.response.data) return null;
+              const responseBody : ResponseDto = error.response.data;
+              return responseBody;
+            })
+            return result;
 }

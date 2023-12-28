@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import './style.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
-import { MAIN_POKET_NAME_LIST, SAVE_PATH } from '../../constants';
+import { MAIN_POKET_NAME_LIST, SAVE_PATH, SEARCH_PATH } from '../../constants';
 import Pagination from '../../components/Pagination';
 import { GetPoketListResponseDto, PoketListResponseDto } from '../../interfaces/response';
 import { getPoketListRequest } from '../../apis';
@@ -23,7 +23,8 @@ export default function Main() {
   const [currentList, setCurrentList] = useState<PoketListResponseDto[]>([]);
 
   // state : 검색어 상태 //
-  const [searchWord, setSearchWord] = useState<string>('');
+  const [name, setName] = useState<string>('');
+
   // state : 검색어 ref //
   const searchButtonRef = useRef<HTMLInputElement | null>(null);
 
@@ -55,7 +56,6 @@ const getPoketListResponse = (responseBody: GetPoketListResponseDto | ResponseDt
   getViewPoketList(poketList);
 }
 
-
 // event handler : 저장하기 버튼 클릭 이벤트 //
 const onSaveClickHandler =  () => {
   navigator(SAVE_PATH());
@@ -63,16 +63,17 @@ const onSaveClickHandler =  () => {
 
 // event handler : 검색어 변경 //
 const onSearchChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
-  setSearchWord(event.target.value);
+  setName(event.target.value);
 }
 
 // event handler : 검색 버튼 클릭 이벤트 //
 // todo : 검색 다시 생각 //
 const onSearchClickHandler = () => {
-  if(!searchWord) {
+  if(!name) {
     alert('검색어를 입력해주세요.');
     return;
   }
+  navigator(SEARCH_PATH(name));
 };
 
 // effect //

@@ -1,0 +1,169 @@
+#poket-search-wrapper {
+  width: 1900px;
+  height: 960px;
+  min-height: 960px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.poket-search-header {
+  height: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(250,255,0,0.3);
+}
+
+.poket-search-title-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: calc(100% - 100px - 100px);
+  height: calc(100% - 15px - 15px);
+
+  border: 0.5px solid rgba(0,0,0,0.3);
+  border-radius: 30px;
+
+  background-color: rgba(255,255,255,1);
+}
+
+.poket-search-title {
+  display: flex;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 140%;
+}
+
+.poket-search-contents-container {
+  min-height: 840px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.poket-search-contents-box {
+  margin: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgba(202,254,233,1);
+}
+
+.poket-search-contents-title-box {
+  height: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poket-search-contents-title {
+  height: 70%;
+  width: 720px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(255,255,255,1);
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.poket-search-button {
+  height: 50px;
+  width: 70px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  border: none;
+  border-radius: 50px;
+
+  cursor: pointer;
+}
+.poket-search-button:hover{
+  background-color: rgba(0,0,0,0.1);
+}
+
+.poket-search-contents-save-box {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.poket-search-contents-save-name {
+  width: 1800px;
+  height: 650px;
+  padding: 10px;
+
+  background-color: rgba(255,255,255,1);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 35px;
+
+  gap: 13px;
+}
+
+.poket-search-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.poket-search-input-box {
+  display: flex;
+  justify-content: center;
+}
+
+.poket-search-input {
+  width: 580px;
+  border: 0.5px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
+
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 140%;
+  color: rgba(0,0,0,0.6);
+}
+
+.poket-search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: 50px;
+  width: 70px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+
+  border: none;
+  border-radius: 50px;
+  
+  background-color: rgba(0,0,0,0.1);
+
+  cursor: pointer;
+}
