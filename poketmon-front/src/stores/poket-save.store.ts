@@ -32,7 +32,7 @@ interface PoketSaveStore {
   setIndividualAttack : (individualAttack : string) => void;
   setIndividualDefence : (individualDefence: string) => void;
   setIndividualSpecialAttack : (individualSpecialAttack :string) => void;
-  setIndividualSpecialDefence : (individualSpecialSefence : string) => void;
+  setIndividualSpecialDefence : (individualSpecialDefence : string) => void;
   setIndividualSpeed : (individualSpeed : string) => void;
   setEffortHp : (effortHp : string) => void;
   setEffortAttack : (effortAttack: string) => void;
@@ -80,7 +80,7 @@ const usePoketSaveStore = create<PoketSaveStore>((set) => ({
   setIndividualAttack : (individualAttack) => set((state) => ({...state, individualAttack})),
   setIndividualDefence : (individualDefence) => set((state) => ({...state, individualDefence})),
   setIndividualSpecialAttack : (individualSpecialAttack) => set((state) => ({...state, individualSpecialAttack})),
-  setIndividualSpecialDefence : (individualSpecialSefence) => set((state) => ({...state, individualSpecialSefence})),
+  setIndividualSpecialDefence : (individualSpecialDefence) => set((state) => ({...state, individualSpecialDefence})),
   setIndividualSpeed : (individualSpeed) => set((state) => ({...state, individualSpeed})),
   setEffortHp : (effortHp) => set((state) => ({...state, effortHp})),
   setEffortAttack : (effortAttack) => set((state) => ({...state, effortAttack})),
@@ -103,7 +103,7 @@ const usePoketSaveStore = create<PoketSaveStore>((set) => ({
     individualAttack : '', 
     individualDefence : '', 
     individualSpecialAttack :'', 
-    individualSpecialSefence : '', 
+    individualSpecialDefence : '', 
     individualSpeed : '', 
     effortHp : '', 
     effortAttack : '', 

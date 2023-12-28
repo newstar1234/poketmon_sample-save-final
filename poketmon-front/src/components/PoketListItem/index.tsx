@@ -31,7 +31,9 @@ export default function PoketListItem({item} : Props) {
   // render //
   return (
     <div className='poket-wrapper' onClick={onPoketClickHandler}>
-      <div className='poket-badge-name'>{name}</div>
+      <div className='poket-badge-name-box'>
+        <div className='poket-badge-name'>{name}</div>
+      </div>
       <div className='poket-badge'>{type}</div>
       <div className='poket-badge'>{specificity}</div>
       <div className='poket-badge'>{characters}</div>

@@ -99,8 +99,37 @@
   background-color: rgba(0,0,255,0.1);
 }
 
+.poket-sample-button-box {
+  padding: 15px 50px 0 50px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.poket-sample-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 90px;
+  height: 30px;
+
+  border: 0.1px solid rgba(0,0,0,0.1);
+  border-radius: 70%;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 140%;
+
+  cursor: pointer;
+}
+
+.poket-sample-button:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
 .poket-sample-result-box {
-  padding: 70px 15px 30px 15px;
+  padding: 50px 15px 30px 15px;
 
   display: flex;
   flex-direction: row;
@@ -108,7 +137,6 @@
 
   justify-content: center;
   align-items: center;
-
 }
 
 .poket-save-input-first {
@@ -173,8 +201,9 @@
   font-size: 28px;
 }
 .poket-save-sample-value {
-  font-size: 38px;
-  font-weight: 550;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 140%;
 }
 
 .poket-save-sample-technology{

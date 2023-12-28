@@ -13,8 +13,6 @@ import { getPoketListRequest } from '../../apis';
 //            component           //
 export default function Main() {
 
-  // state : 검색어 path 상태 //
-  const { poketmonNumber } = useParams();
 
   // state : 페이지네이션 관련 상태 //
   const{totalPage, currentPage, currentSection, onPageClickHandler, onPreviousClickHandler, onNextClickHandler, changeSection} = usePagination();

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { ResponseDto } from "../interfaces";
-import { GetPoketListResponseDto, GetPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
+import { GetPoketListResponseDto, GetPoketResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from "../interfaces/response";
 import PostPoketRequestDto from "../interfaces/request/post-poket.request.dto";
+import PatchPoketRequestDto from "../interfaces/request/patch-poket.request.dto";
 
 const API_DOMAIN = 'http://localhost:4040/api/poketmon';
 
@@ -36,6 +37,22 @@ export const postPoketRequest = async (requestBody : PostPoketRequestDto) => {
                 })
                 return result;
 } 
+
+// 수정
+const PATCH_POKET_URL = (poketmonNumber: number|string) => `${API_DOMAIN}/${poketmonNumber}`;
+export const patchPoketRequest = async (poketmonNumber: number|string, requestBody:PatchPoketRequestDto) => {
+  const result = await axios.patch(PATCH_POKET_URL(poketmonNumber), requestBody)
+                .then(response => {
+                  const responseBody: PatchPoketResponseDto = response.data;
+                  return responseBody;
+                })
+                .catch((error) => {
+                  if(!error.response.data) return null;
+                  const responseBody : ResponseDto = error.response.data;
+                  return responseBody;
+                })
+                return result;
+}
 
 // 포켓몬 저장내용 불러오기 //
 const GET_POKET_URL = (poketmonNumber : number | string) => `${API_DOMAIN}/${poketmonNumber}`;

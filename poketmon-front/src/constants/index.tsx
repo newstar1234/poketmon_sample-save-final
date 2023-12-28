@@ -1,5 +1,6 @@
 export const MAIN_PATH = () =>  '/';
 export const SAVE_PATH = () => 'save';
+export const UPDATE_PATH = (poketmonNumber: number| string) => `/update/${poketmonNumber}`;
 
 export const RESULT_PATH = (poketmonNumber : number | string) => `result/${poketmonNumber}`;
 

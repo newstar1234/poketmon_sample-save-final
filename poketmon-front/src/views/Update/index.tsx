@@ -1,14 +1,15 @@
-import React, { ChangeEvent, useRef } from 'react'
+import React, { ChangeEvent, useEffect, useRef } from 'react'
 import './style.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { usePoketSaveStore } from '../../stores';
-import { PostPoketResponseDto } from '../../interfaces/response';
+import { GetPoketResponseDto, PatchPoketResponseDto, PostPoketResponseDto } from '../../interfaces/response';
 import { MAIN_PATH } from '../../constants';
-import { postPoketRequest } from '../../apis';
+import { getPoketRequest, patchPoketRequest, postPoketRequest } from '../../apis';
 import PostPoketRequestDto from '../../interfaces/request/post-poket.request.dto';
 import { ResponseDto } from '../../interfaces';
+import PatchPoketRequestDto from '../../interfaces/request/patch-poket.request.dto';
 
-export default function Save() {
+export default function Update() {
 
   // state : 요소 참조 상태 //
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -51,21 +52,72 @@ export default function Save() {
     resetPoket
   } = usePoketSaveStore();
 
+  // state : path variable //
+  const { poketmonNumber } = useParams();
 
   //            function           //
   const navigator = useNavigate();
 
-  // function : post poket response //
-  const postPoketResponse = (responseBody : PostPoketResponseDto | ResponseDto | null ) => {
-  if(!responseBody) return;
-  const { code } = responseBody;
-  if(code === 'DB') alert('데이터베이스 오류입니다.');
-  if(code !== 'SU') return;
+  // function : get poket response //
+  const getPoketResponse = (responseBody: GetPoketResponseDto | ResponseDto | null) => {
+    if(!responseBody) return;
+    const { code } = responseBody;
+    if(code === 'DE') alert('데이터베이스 오류입니다.');
+    if(code !== 'SU') return;
 
-  resetPoket();
+    const { name, type, specificity, characters, things,
+      individualHp, individualAttack, individualDefence,
+      individualSpecialAttack, individualSpecialDefence, individualSpeed,
+      effortHp, effortAttack, effortDefence,
+      effortSpecialAttack, effortSpecialDefence, effortSpeed,
+      technologyOne, technologyTwo, technologyThree, technologyFour } = responseBody as GetPoketResponseDto;
+      setName(name);
+      setType(type);
+      setSpecificity(specificity);
+      setCharacters(characters);
+      setThings(things);
+      setIndividualHp(individualHp);
+      setIndividualAttack(individualAttack);
+      setIndividualDefence(individualDefence);
+      setIndividualSpecialAttack(individualSpecialAttack);
+      setIndividualSpecialDefence(individualSpecialDefence);
+      setIndividualSpeed(individualSpeed);
+      setEffortHp(effortHp);
+      setEffortAttack(effortAttack);
+      setEffortDefence(effortDefence);
+      setEffortSpecialAttack(effortSpecialAttack);
+      setEffortSpecialDefence(effortSpecialDefence);
+      setEffortSpeed(effortSpeed);
+      setTechnologyOne(technologyOne);
+      setTechnologyTwo(technologyTwo);
+      setTechnologyThree(technologyThree);
+      setTechnologyFour(technologyFour);
+  }
 
-  navigator(MAIN_PATH());
-}
+  // function : patch poket response //
+  const patchPoketResponse = (responseBody: PatchPoketResponseDto | ResponseDto | null) => {
+    if(!responseBody) return;
+    const { code } = responseBody;
+    if(code === 'DE')alert('데이터베이스 오류입니다.');
+    if(code !== 'SU') return;
+
+    if(!poketmonNumber) return;
+    navigator(MAIN_PATH());
+  }
+  
+  // event handler : 수정버튼 클릭 이벤트 //
+  const onUpdateButtonClickHandler = async () => {
+    if(!poketmonNumber) return;
+    const requestBody : PatchPoketRequestDto = {
+      name, type, specificity, characters, things,
+      individualHp, individualAttack, individualDefence,
+      individualSpecialAttack, individualSpecialDefence, individualSpeed,
+      effortHp, effortAttack, effortDefence,
+      effortSpecialAttack, effortSpecialDefence, effortSpeed,
+      technologyOne, technologyTwo, technologyThree, technologyFour
+    }
+    patchPoketRequest(poketmonNumber, requestBody).then(patchPoketResponse);
+  }
 
 // event handler : 이름 입력 이벤트 //
 const onNameChangeHandler = (event : ChangeEvent<HTMLInputElement>) => {
@@ -114,7 +166,8 @@ const onIndividualSpecialAttackChangeHandler = (event : ChangeEvent<HTMLInputEle
 }
 // event handler : 개체치 특방 입력 이벤트 //
 const onIndividualSpecialDefenceChangeHandler = (event : ChangeEvent<HTMLInputElement>) => {
-  setIndividualSpecialDefence(event.target.value);
+  const { value } = event.target;
+  setIndividualSpecialDefence(value);
 }
 // event handler : 개체치 스피드 입력 이벤트 //
 const onIndividualSpeedChangeHandler = (event : ChangeEvent<HTMLInputElement>) => {
@@ -176,21 +229,11 @@ const onMainClickHandler = () => {
   navigator(MAIN_PATH());
 }
 
-// event handler : 저장하기 버튼 클릭 이벤트 //
-const onSaveClickHandler = async () => {
-  
-   const requestBody : PostPoketRequestDto = {
-     name, type, specificity, characters, things,
-     individualHp, individualAttack, individualDefence,
-     individualSpecialAttack, individualSpecialDefence, individualSpeed,
-     effortHp, effortAttack, effortDefence,
-     effortSpecialAttack, effortSpecialDefence, effortSpeed,
-     technologyOne, technologyTwo, technologyThree, technologyFour
-   }
-   postPoketRequest(requestBody).then(postPoketResponse);
-  
- };
-
+// effect : 마운트시 실행할 함수 //
+useEffect(() => {
+  if(!poketmonNumber) return;
+  getPoketRequest(poketmonNumber).then(getPoketResponse);
+}, [poketmonNumber]);
 
 //            render           //
   return (
@@ -233,8 +276,8 @@ const onSaveClickHandler = async () => {
             <input ref={technologyFourRef} className='poket-save-sample-technology-four' onChange={onTechnologyFourChangeHandler}value={technologyFour} ></input>
           </div>
         </div>
-          <div className='poket-save-button-box' onClick={onSaveClickHandler} >
-            <button className='poket-save-button'>{'저장'}</button>
+          <div className='poket-save-button-box' >
+            <button className='poket-save-button' onClick={onUpdateButtonClickHandler} >{'수정'}</button>
           </div>
       </div>
     </div>

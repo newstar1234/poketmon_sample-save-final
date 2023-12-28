@@ -6,14 +6,19 @@
   align-items: center;
 
   width: 150px;
-  height: 500px;
+  height: 550px;
 
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.3);
   border-radius: 20px;
 
-  gap: 1px;
+  gap: 4px;
 
   cursor: pointer;
+}
+
+.poket-badge-name-box {
+  background-color: rgba(0,0,255,0.1);
+  border-radius: 35%;
 }
 
 .poket-badge-name{
