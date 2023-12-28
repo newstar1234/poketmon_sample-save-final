@@ -1,7 +1,5 @@
 package com.example.poketmon.service.Implement;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,17 +8,11 @@ import com.example.poketmon.dto.ResponseDto;
 import com.example.poketmon.dto.request.PatchPoketRequestDto;
 import com.example.poketmon.dto.request.PostPoketRequestDto;
 import com.example.poketmon.dto.response.DeletePoketResponseDto;
-import com.example.poketmon.dto.response.GetPoketNameListResponseDto;
-import com.example.poketmon.dto.response.GetPoketNameResponseDto;
 import com.example.poketmon.dto.response.GetPoketResponseDto;
-import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
 import com.example.poketmon.dto.response.PatchPoketResponseDto;
-import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.dto.response.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.PoketRepository;
-import com.example.poketmon.repository.resultSet.GetPoketNameListResultSet;
-import com.example.poketmon.repository.resultSet.GetPoketNameResultSet;
 import com.example.poketmon.service.PoketService;
 
 import lombok.RequiredArgsConstructor;
@@ -106,57 +98,8 @@ public class PoketServiceImplement implements PoketService{
     return GetPoketResponseDto.success(poketEntity);
   }
 
-  @Override
-  public ResponseEntity<? super GetPoketNameListResponseDto> getPoketNameList() {
+  
+ 
 
-    List<GetPoketNameListResultSet> resultSets = new ArrayList<>();
-
-    try {
-
-      resultSets = poketRepository.getPoketNameList();
-      
-    } catch (Exception exception) {
-      exception.printStackTrace();
-      return ResponseDto.databaseError();
-    }
-    return GetPoketNameListResponseDto.success(resultSets);
-  }
-
-  @Override
-  public ResponseEntity<? super GetPoketNameResponseDto> getPoketName(Integer poketmonNumber) {
-
-    GetPoketNameResultSet resultSet = null;
-
-    try {
-
-      resultSet = poketRepository.getPoketName(poketmonNumber);
-      if(resultSet == null) return GetPoketNameResponseDto.fail();
-      
-    } catch (Exception exception) {
-      exception.printStackTrace();
-      return ResponseDto.databaseError();
-    }
-    return GetPoketNameResponseDto.success(resultSet);
-
-  }
-
-  @Override
-  public ResponseEntity<? super GetSearchPoketResponseDto> getSearchPoket(String name) {
-
-    List<PoketListResponseDto> poketList = null;
-
-    try {
-
-      List<PoketEntity> poketEntities = poketRepository.findByNameContainsOrderByPoketmonNumberDesc(name);
-      
-      poketList = PoketListResponseDto.copyPoketList(poketEntities);
-
-    } catch (Exception exception) {
-      exception.printStackTrace();
-      return ResponseDto.databaseError();
-    }
-
-    return GetSearchPoketResponseDto.success(poketList);
-  }
   
 }
