@@ -82,6 +82,32 @@
   line-height: 140%;
 }
 
+.poket-search-back-button-box {
+  padding-right: 30px;
+
+  display: flex;
+  justify-content: end;
+}
+
+.poket-search-back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 30px;
+
+  border: none;
+  border-radius: 50% 50% 0 0;
+
+  background-color: rgba(255,255,255,1);
+}
+
+.poket-search-back-button:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.1);
+}
+
 .poket-search-button {
   height: 50px;
   width: 70px;

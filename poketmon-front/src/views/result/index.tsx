@@ -71,13 +71,8 @@ export default function Result() {
       <div className='poket-sample-result-header'>
         <div className='poket-sample-result-header-right' onClick={onMainClickHandler} >{'포켓몬 샘플 데이터'}</div>
       </div>
+      <div className='poket-sample-result-empty-box'></div>
       <div className='poket-sample-result-main-box'>
-        <div className='poket-sample-result-search-box'>
-          <div className='poket-sample-result-search'>
-            <input className='poket-sample-result-search-input' placeholder='검색어를 입력해주세요.'></input>
-          </div>
-          <button className='poket-sample-result-search-button'>{'검색'}</button>
-        </div>
         <div className='poket-sample-button-box'>
             <div className='poket-sample-button' onClick={onUpdateClickHandler} >{'수정'}</div>
             <div className='poket-sample-button' onClick={onDeleteClickHandler} >{'삭제'}</div>

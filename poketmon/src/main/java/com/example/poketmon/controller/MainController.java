@@ -80,7 +80,7 @@ public class MainController {
   // 검색 //
   @GetMapping("/search/{name}")
   public ResponseEntity<? super GetSearchPoketResponseDto> getSearch(
-    @PathVariable String name
+    @PathVariable("name") String name
   ){
     ResponseEntity<? super GetSearchPoketResponseDto> response = poketService.getSearch(name);
     return response;

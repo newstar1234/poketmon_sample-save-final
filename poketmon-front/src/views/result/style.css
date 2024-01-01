@@ -48,55 +48,18 @@
   cursor: pointer;
 }
 
-.poket-sample-result-main-box {
-  background-color: rgba(70, 219, 219, 0.1);
-
-  height: 784px;
-}
-
-.poket-sample-result-search-box {
-  margin-top: 30px;
-  height: 100px;
-  
+.poket-sample-result-empty-box {
   display: flex;
-  flex-direction: row;
-  gap: 80px;
 
-  justify-content: center;
-  align-items: center;
+  height: 100px;
 
   background-color: rgba(255,255,255,1);
 }
 
-.poket-sample-result-search {
-  display: flex;
-  justify-content: center;
-}
+.poket-sample-result-main-box {
+  background-color: rgba(70, 219, 219, 0.1);
 
-.poket-sample-result-search-input {
-  display: flex;
-  text-align: center;
-
-  height: 30px;
-  width: 380px;
-
-  border: 0.1px solid rgba(0,0,0,0.1);
-  border-radius: 20px;
-}
-
-.poket-sample-result-search-button {
-  height: 35px;
-  width: 80px;
-
-  font-size: 18px;
-
-  border-radius: 15px;
-  border: none;
-}
-
-.poket-sample-result-search-button:hover {
-  cursor: pointer;
-  background-color: rgba(0,0,255,0.1);
+  height: 784px;
 }
 
 .poket-sample-button-box {
@@ -114,8 +77,10 @@
   width: 90px;
   height: 30px;
 
-  border: 0.1px solid rgba(0,0,0,0.1);
+  border: none;
   border-radius: 70%;
+
+  background-color: rgba(255,255,255,1);
 
   font-size: 18px;
   font-weight: 400;
@@ -178,7 +143,10 @@
 .poket-save-sample-name{
   height: 30px;
 
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 140%;
+
 }
 .poket-save-sample-type{
   height: 30px;
@@ -201,9 +169,19 @@
   font-size: 28px;
 }
 .poket-save-sample-value {
+  width: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 35px;
   font-weight: 600;
   line-height: 140%;
+
+  border: none;
+  border-radius: 75px;
+  background-color: rgba(255,255,255,0.7);
 }
 
 .poket-save-sample-technology{
