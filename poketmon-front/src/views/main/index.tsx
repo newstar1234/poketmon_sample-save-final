@@ -1,5 +1,7 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
@@ -96,7 +98,9 @@ useEffect (() => {
         <div className='poket-main-contents-box'>
           <div className='poket-main-contents-title-box'>
             <div className='poket-main-contents-title'>{'저장된 포켓몬 목록'}</div>
-            <button className='poket-main-button' onClick={onSaveClickHandler} >{'저장하기'}</button>
+            <div className='poket-main-button' onClick={onSaveClickHandler} >
+              <Button variant="dark" >{'저장'}</Button>
+            </div>
           </div>
           <div className='poket-main-contents-save-box'>
             <div className='poket-main-contents-save-name' >

@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.poketmon.dto.response.PoketListResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.resultSet.PoketListResultSet;
 
