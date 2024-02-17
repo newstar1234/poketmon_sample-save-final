@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
 interface Poket {
-  name: string;  
+  userId: string;
+  name: string;
   type : string;
   specificity : string;
   characters : string;

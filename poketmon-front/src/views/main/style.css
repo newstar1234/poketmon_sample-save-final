@@ -16,11 +16,14 @@
   justify-content: center;
   align-items: center;
 
+  gap: 10px;
+
   background-color: rgba(250,255,0,0.3);
 }
 
 .poket-main-title-box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -38,6 +41,10 @@
   font-size: 32px;
   font-weight: 600;
   line-height: 140%;
+}
+
+.poket-main-login-box {
+  display: flex;
 }
 
 .poket-main-contents-container {

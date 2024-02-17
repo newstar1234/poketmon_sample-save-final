@@ -1,21 +1,21 @@
 package com.example.poketmon.service.Implement;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.poketmon.dto.ResponseDto;
-import com.example.poketmon.dto.request.PatchPoketRequestDto;
-import com.example.poketmon.dto.request.PostPoketRequestDto;
-import com.example.poketmon.dto.response.DeletePoketResponseDto;
-import com.example.poketmon.dto.response.GetPoketListResponseDto;
-import com.example.poketmon.dto.response.GetPoketResponseDto;
-import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
-import com.example.poketmon.dto.response.PatchPoketResponseDto;
-import com.example.poketmon.dto.response.PoketListResponseDto;
-import com.example.poketmon.dto.response.PostPoketResponseDto;
+import com.example.poketmon.dto.request.poket.PatchPoketRequestDto;
+import com.example.poketmon.dto.request.poket.PostPoketRequestDto;
+import com.example.poketmon.dto.response.poket.DeletePoketResponseDto;
+import com.example.poketmon.dto.response.poket.GetPoketListResponseDto;
+import com.example.poketmon.dto.response.poket.GetPoketResponseDto;
+import com.example.poketmon.dto.response.poket.GetSearchPoketResponseDto;
+import com.example.poketmon.dto.response.poket.PatchPoketResponseDto;
+import com.example.poketmon.dto.response.poket.PoketListResponseDto;
+import com.example.poketmon.dto.response.poket.PostPoketResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 import com.example.poketmon.repository.PoketRepository;
 import com.example.poketmon.repository.resultSet.PoketListResultSet;
@@ -33,6 +33,7 @@ public class PoketServiceImplement implements PoketService{
   public ResponseEntity<? super PostPoketResponseDto> poketSave(PostPoketRequestDto dto) {
 
     try {
+
       PoketEntity poketEntity = new PoketEntity(dto);
 
       poketRepository.save(poketEntity);
@@ -71,11 +72,9 @@ public class PoketServiceImplement implements PoketService{
 
     try {
 
-      // 존재하는지 확인 //
       PoketEntity poketEntity = poketRepository.findByPoketmonNumber(poketmonNumber);
       if(poketEntity == null) return DeletePoketResponseDto.fail();
 
-      // 데이터 삭제 //
       poketRepository.delete(poketEntity);
 
       
@@ -94,8 +93,6 @@ public class PoketServiceImplement implements PoketService{
     try {
       poketEntity = poketRepository.findByPoketmonNumber(poketmonNumber);
       if(poketEntity == null) return GetPoketResponseDto.fail();
-
-      poketRepository.save(poketEntity);
       
     } catch (Exception exception) {
       exception.printStackTrace();
@@ -107,7 +104,7 @@ public class PoketServiceImplement implements PoketService{
   @Override
   public ResponseEntity<? super GetPoketListResponseDto> getPoketList(Integer section) {
 
-    List<PoketListResponseDto> poketList = null;
+    List<PoketListResponseDto> poketList = new ArrayList<>();
 
     try {
     

@@ -1,4 +1,4 @@
-package com.example.poketmon.dto.response;
+package com.example.poketmon.dto.response.poket;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ public class GetPoketListResponseDto extends ResponseDto {
 
   List<PoketListResponseDto> poketList;
 
-  private GetPoketListResponseDto(String code, String message, List<PoketListResponseDto> poketList) {
-    super(code, message);
+  private GetPoketListResponseDto(List<PoketListResponseDto> poketList) {
+    super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
     this.poketList = poketList;
   }
 
   public static ResponseEntity<GetPoketListResponseDto> success(List<PoketListResponseDto> poketList) {
-    GetPoketListResponseDto result = new GetPoketListResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS, poketList);
+    GetPoketListResponseDto result = new GetPoketListResponseDto(poketList);
     return ResponseEntity.status(HttpStatus.OK).body(result);
   }
 

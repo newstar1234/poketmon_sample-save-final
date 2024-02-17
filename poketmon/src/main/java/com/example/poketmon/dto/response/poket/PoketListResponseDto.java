@@ -1,4 +1,4 @@
-package com.example.poketmon.dto.response;
+package com.example.poketmon.dto.response.poket;
 
 import java.util.ArrayList;
 import java.util.List;

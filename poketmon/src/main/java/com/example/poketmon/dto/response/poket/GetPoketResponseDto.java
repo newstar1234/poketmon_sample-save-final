@@ -1,4 +1,4 @@
-package com.example.poketmon.dto.response;
+package com.example.poketmon.dto.response.poket;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,11 +8,9 @@ import com.example.poketmon.common.response.ResponseMessage;
 import com.example.poketmon.dto.ResponseDto;
 import com.example.poketmon.entity.PoketEntity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class GetPoketResponseDto extends ResponseDto {
   
   private String name;
@@ -37,8 +35,8 @@ public class GetPoketResponseDto extends ResponseDto {
   private String technologyThree;
   private String technologyFour;
 
-  private GetPoketResponseDto(String code, String message, PoketEntity poketEntity) {
-    super(code, message);
+  private GetPoketResponseDto(PoketEntity poketEntity) {
+    super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
     this.name = poketEntity.getName();
     this.type = poketEntity. getType();
     this.specificity = poketEntity.getSpecificity();
@@ -63,7 +61,7 @@ public class GetPoketResponseDto extends ResponseDto {
   }
 
   public static ResponseEntity<GetPoketResponseDto> success(PoketEntity poketEntity){
-    GetPoketResponseDto result = new GetPoketResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS, poketEntity);
+    GetPoketResponseDto result = new GetPoketResponseDto(poketEntity);
     return ResponseEntity.status(HttpStatus.OK).body(result);
   }
 

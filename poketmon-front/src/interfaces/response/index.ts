@@ -15,5 +15,5 @@ export type {
   GetPoketListResponseDto,
   PatchPoketResponseDto,
   DeletePoketResponseDto,
-  GetSearchPoketListResponseDto
+  GetSearchPoketListResponseDto,
 }

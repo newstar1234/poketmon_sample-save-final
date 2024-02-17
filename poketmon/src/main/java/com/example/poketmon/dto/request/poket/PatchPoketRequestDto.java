@@ -1,4 +1,4 @@
-package com.example.poketmon.dto.request;
+package com.example.poketmon.dto.request.poket;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostPoketRequestDto {
+public class PatchPoketRequestDto {
   
   @NotBlank
   private String name;

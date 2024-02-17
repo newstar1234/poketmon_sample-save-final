@@ -100,4 +100,4 @@ export const getSearchPoketListRequest = async (name : string) => {
               return responseBody;
             })
             return result;
-}
+};

@@ -2,14 +2,14 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ResponseDto } from '../../interfaces';
 import PoketListItem from '../../components/PoketListItem';
 import { usePagination } from '../../hooks';
-import { MAIN_POKET_NAME_LIST, SAVE_PATH, SEARCH_PATH } from '../../constants';
+import { MAIN_PATH, MAIN_POKET_NAME_LIST, SAVE_PATH, SEARCH_PATH } from '../../constants';
 import Pagination from '../../components/Pagination';
-import { GetPoketListResponseDto, PoketListResponseDto } from '../../interfaces/response';
 import { getPoketListRequest } from '../../apis';
+import { GetPoketListResponseDto, PoketListResponseDto } from '../../interfaces/response';
 
 
 //            component           //
@@ -29,6 +29,7 @@ export default function Main() {
 
   // state : 검색어 ref //
   const searchButtonRef = useRef<HTMLInputElement | null>(null);
+
 
   
 //            function           //
@@ -78,6 +79,7 @@ const onSearchClickHandler = () => {
   navigator(SEARCH_PATH(name));
 };
 
+
 // effect //
 useEffect(() => {
   getViewPoketList(currentList);
@@ -86,13 +88,14 @@ useEffect (() => {
   getPoketListRequest(currentSection).then(getPoketListResponse);
 }, [currentSection]);
 
+
 //            render           //
   return (
     <div id='poket-main-wrapper'>
       <div className='poket-main-header'>
         <div className='poket-main-title-box'>
           <div className='poket-main-title'>{'포켓몬스터 실전 개체값 저장소'}</div>
-        </div>  
+        </div>
       </div>      
       <div className='poket-main-contents-container'>
         <div className='poket-main-contents-box'>

@@ -1,0 +1,36 @@
+24.01.28
+(변경 전) - 이때 원하는 값이 toFriend였는데 쿼리에서 user_id를 찾을수 없다고 계속 에러가 나거나 성공하더라도 계속 중복된 값이 나왔다.
+public class FriendListItem {
+  
+  private String userId;
+  private String toFriend;
+
+  public FriendListItem(FriendListResultSet friendListResultSet) {
+    this.userId = friendListResultSet.getUserId();
+    this.toFriend = friendListResultSet.getToFriend();
+  }
+
+  public static List<FriendListItem> getList(List<FriendListResultSet> friendListResultSets) {
+    List<FriendListItem> list = new ArrayList<>();
+    for(FriendListResultSet friendListResultSet : friendListResultSets) {
+      FriendListItem friendListItem = new FriendListItem(friendListResultSet);
+      list.add(friendListItem);
+    }
+    return list;
+  }
+}
+(변경 후) - resultSet 으로 변경하니 데이터가 중복되지않고 제대로 반환됨. 이유가 뭔지 궁금하다!!!
+public interface FriendListResultSet {
+  
+  String getUserId();
+  String getToFriend();
+
+}
+
+**참고**
+****************************************************************************************
+ConverterNotFoundException
+JPA 조회 결과를 받을 때 DTO 클래스를 만들어서 반환받으면 ConverterNotFoundException가 발생.
+왜 인지 모르겠으나, getter를 정의한 인터페이스를 사용해야 정상 작동. 
+****************************************************************************************
+라는 블로그 글을 읽음

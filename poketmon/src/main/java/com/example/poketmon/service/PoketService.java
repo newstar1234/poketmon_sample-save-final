@@ -2,14 +2,14 @@ package com.example.poketmon.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.poketmon.dto.request.PatchPoketRequestDto;
-import com.example.poketmon.dto.request.PostPoketRequestDto;
-import com.example.poketmon.dto.response.DeletePoketResponseDto;
-import com.example.poketmon.dto.response.GetPoketListResponseDto;
-import com.example.poketmon.dto.response.GetPoketResponseDto;
-import com.example.poketmon.dto.response.GetSearchPoketResponseDto;
-import com.example.poketmon.dto.response.PatchPoketResponseDto;
-import com.example.poketmon.dto.response.PostPoketResponseDto;
+import com.example.poketmon.dto.request.poket.PatchPoketRequestDto;
+import com.example.poketmon.dto.request.poket.PostPoketRequestDto;
+import com.example.poketmon.dto.response.poket.DeletePoketResponseDto;
+import com.example.poketmon.dto.response.poket.GetPoketListResponseDto;
+import com.example.poketmon.dto.response.poket.GetPoketResponseDto;
+import com.example.poketmon.dto.response.poket.GetSearchPoketResponseDto;
+import com.example.poketmon.dto.response.poket.PatchPoketResponseDto;
+import com.example.poketmon.dto.response.poket.PostPoketResponseDto;
 
 public interface PoketService {
   

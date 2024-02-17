@@ -1,4 +1,4 @@
-package com.example.poketmon.dto.response;
+package com.example.poketmon.dto.response.poket;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,19 +7,17 @@ import com.example.poketmon.common.response.ResponseCode;
 import com.example.poketmon.common.response.ResponseMessage;
 import com.example.poketmon.dto.ResponseDto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class PostPoketResponseDto extends ResponseDto {
   
-  private PostPoketResponseDto(String code, String message) {
-    super(code, message);
+  private PostPoketResponseDto() {
+    super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
   }
 
   public static ResponseEntity<PostPoketResponseDto> success(){
-    PostPoketResponseDto result = new PostPoketResponseDto(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
+    PostPoketResponseDto result = new PostPoketResponseDto();
     return ResponseEntity.status(HttpStatus.OK).body(result);
   }
 

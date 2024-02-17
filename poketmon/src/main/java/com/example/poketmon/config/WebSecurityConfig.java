@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,7 +27,8 @@ import com.example.poketmon.filter.JwtAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
 
-@Configuration
+@Configurable // 어노테이션 빈을 등록할수 있도록 만들어줌
+@Configuration // 빈을 가지고 있는 클래스다
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
@@ -43,14 +45,13 @@ public class WebSecurityConfig {
         .csrf(CsrfConfigurer::disable)
         .httpBasic(HttpBasicConfigurer::disable)
         .sessionManagement(sesstionManagement -> sesstionManagement
-              .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        )   
+              .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 상태를 유지하지 않겠다
+        ) // 어떤 부분(요청)에서 인증을 거칠것인지 // 어떤 부분에서 권한이 있는 사람을 허용할건지
         .authorizeHttpRequests(request -> request
-              .requestMatchers("/", "/api/poketmon/**", "/file/**").permitAll()
-              .requestMatchers(HttpMethod.GET, "/api/poketmon/**").permitAll()
-              .requestMatchers(HttpMethod.POST, "/api/poketmon/**").permitAll()
+              .requestMatchers("/", "/api/poketmon/**", "/api/poketmon/list/**").permitAll()
+              .requestMatchers(HttpMethod.GET, "/api/poketmon/**", "/api/poketmon/list/**").permitAll()
               .anyRequest().authenticated()
-        )
+        ) // 인가 실패의 경우 
         .exceptionHandling(exceptionHandling -> exceptionHandling
               .authenticationEntryPoint(new FailedAuthenticationEntryPoint())
         )
@@ -58,22 +59,24 @@ public class WebSecurityConfig {
     return httpSecurity.build();
             
     }
+
     @Bean
     protected CorsConfigurationSource corsConfigrationSource() {
-    CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOrigin("*");
-    configuration.addAllowedMethod("*");
-    configuration.addAllowedHeader("*");
+      
+      CorsConfiguration configuration = new CorsConfiguration(); // 인스턴스 생성
+      configuration.addAllowedOrigin("*"); // 모든 출처에 대해서 허용
+      configuration.addAllowedMethod("*"); // 모든 메소드에 대해서 허용
+      configuration.addAllowedHeader("*"); // 모든 헤더에 대해서 허용
 
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration);
+      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+      source.registerCorsConfiguration("/**", configuration); // 어떤패턴에 대해서 적용? => (모든패턴)
 
-    return source;
+      return source;
   }
 
 }
 
-//! 토큰 잘못입력한 경우 //
+//! 인가 실패 //
 class FailedAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override

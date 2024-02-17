@@ -11,11 +11,11 @@ interface Props {
 export default function PoketListItem({item} : Props) {
 
   // state : properties //
-  const {poketmonNumber, name , things, type, characters, specificity,
+  const { poketmonNumber, name , things, type, characters, specificity,
     individualHp, individualAttack, individualDefence, 
     individualSpecialAttack, individualSpecialDefence, individualSpeed,
     effortHp, effortAttack, effortDefence, effortSpecialAttack, effortSpecialDefence, effortSpeed,
-    technologyOne, technologyTwo, technologyThree, technologyFour} = item;
+    technologyOne, technologyTwo, technologyThree, technologyFour } = item;
 
   // function //
   const navigator = useNavigate();

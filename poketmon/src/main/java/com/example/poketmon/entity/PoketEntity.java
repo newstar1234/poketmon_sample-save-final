@@ -1,7 +1,7 @@
 package com.example.poketmon.entity;
 
-import com.example.poketmon.dto.request.PatchPoketRequestDto;
-import com.example.poketmon.dto.request.PostPoketRequestDto;
+import com.example.poketmon.dto.request.poket.PatchPoketRequestDto;
+import com.example.poketmon.dto.request.poket.PostPoketRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ public class PoketEntity {
   
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int poketmonNumber;
-
+  
   private String name;
   private String type;
   private String specificity;

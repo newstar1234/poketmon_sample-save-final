@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 interface PoketSaveStore {
+  userId: string;
   name: string;  
   type : string;
   specificity : string;
@@ -23,6 +24,7 @@ interface PoketSaveStore {
   technologyThree : string;
   technologyFour : string;
   
+  setUserId: (userID:string) => void;
   setName: (name:string) => void;
   setType : (type : string) => void;
   setSpecificity : (specificity : string) => void;
@@ -49,6 +51,7 @@ interface PoketSaveStore {
 }
 
 const usePoketSaveStore = create<PoketSaveStore>((set) => ({
+  userId: '',
   name: '', 
   type : '',
   specificity : '',
@@ -71,6 +74,7 @@ const usePoketSaveStore = create<PoketSaveStore>((set) => ({
   technologyThree : '',
   technologyFour : '',
   
+  setUserId : (userId) => set((state) => ({...state, userId})),
   setName: (name) => set((state) => ({...state, name})), 
   setType : (type) => set((state) => ({...state, type})),
   setSpecificity : (specificity) => set((state) => ({...state, specificity})),
@@ -94,6 +98,7 @@ const usePoketSaveStore = create<PoketSaveStore>((set) => ({
   setTechnologyFour : (technologyFour) => set((state) => ({...state, technologyFour})),
 
   resetPoket : () => set((state) => ({...state, 
+    userId: '',
     name: '', 
     type : '',
     specificity : '',
